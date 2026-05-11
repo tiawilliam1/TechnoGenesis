@@ -88,6 +88,7 @@ home_theme: alt
       <div class="publications-grid" id="publications-grid">
         {% for post in collections.posts | reverse %}
           {% set publicationUrl = post.data.publication_link or post.url %}
+          {% set publicationImage = post.data.image or post.data.featured_image %}
           <article
             class="publication-card"
             data-index="{{ loop.index0 }}"
@@ -104,26 +105,110 @@ home_theme: alt
                 </a>
               </p>
             </div>
-            {% if post.data.image or post.data.featured_image %}
-              <div class="publication-media">
-                <img src="{{ post.data.image or post.data.featured_image }}" alt="" />
-              </div>
+            {% if publicationImage %}
+              <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Open image preview for {{ post.data.title }}">
+                <img src="{{ publicationImage }}" alt="" />
+              </a>
             {% endif %}
           </article>
         {% endfor %}
       </div>
+      <nav class="publications-pagination" id="publications-pagination" aria-label="Publications pages"></nav>
+      <dialog class="publication-lightbox" id="publication-lightbox" aria-label="Publication image preview">
+        <button type="button" class="publication-lightbox-close" id="publication-lightbox-close" aria-label="Close image preview">×</button>
+        <img id="publication-lightbox-image" src="" alt="" />
+      </dialog>
       <script>
         (() => {
           const grid = document.getElementById("publications-grid");
           const sortSelect = document.getElementById("publications-sort");
-          if (!grid || !sortSelect) return;
+          const pagination = document.getElementById("publications-pagination");
+          const lightbox = document.getElementById("publication-lightbox");
+          const lightboxImage = document.getElementById("publication-lightbox-image");
+          const lightboxClose = document.getElementById("publication-lightbox-close");
+          if (!grid || !sortSelect || !pagination) return;
 
           const cards = Array.from(grid.querySelectorAll(".publication-card"));
+          const pageSize = 3;
+          let orderedCards = [...cards];
+          let currentPage = 1;
+
+          const renderPagination = () => {
+            const totalPages = Math.max(1, Math.ceil(orderedCards.length / pageSize));
+            pagination.innerHTML = "";
+
+            if (totalPages <= 1) {
+              pagination.hidden = true;
+              return;
+            }
+
+            pagination.hidden = false;
+
+            for (let page = 1; page <= totalPages; page += 1) {
+              const button = document.createElement("button");
+              button.type = "button";
+              button.className = "publications-page-btn";
+              button.textContent = String(page);
+              button.setAttribute("aria-label", `Go to page ${page}`);
+
+              if (page === currentPage) {
+                button.classList.add("is-active");
+                button.setAttribute("aria-current", "page");
+              }
+
+              button.addEventListener("click", () => {
+                currentPage = page;
+                renderCards();
+              });
+
+              pagination.appendChild(button);
+            }
+          };
+
+          const renderCards = () => {
+            const start = (currentPage - 1) * pageSize;
+            const end = start + pageSize;
+
+            orderedCards.forEach((card, index) => {
+              grid.appendChild(card);
+              card.hidden = index < start || index >= end;
+            });
+
+            renderPagination();
+          };
+
+          const openLightbox = (event) => {
+            if (!lightbox || !lightboxImage) return;
+
+            event.preventDefault();
+            const link = event.currentTarget;
+            const src = link.dataset.imageSrc || link.getAttribute("href");
+            if (!src) return;
+
+            lightboxImage.src = src;
+            lightboxImage.alt = link.dataset.imageAlt || "Publication image preview";
+
+            if (typeof lightbox.showModal === "function") {
+              if (!lightbox.open) lightbox.showModal();
+              return;
+            }
+
+            window.open(src, "_blank", "noopener");
+          };
+
+          const bindImagePreview = () => {
+            const imageLinks = grid.querySelectorAll(".js-publication-image");
+            imageLinks.forEach((link) => {
+              if (link.dataset.lightboxBound === "true") return;
+              link.dataset.lightboxBound = "true";
+              link.addEventListener("click", openLightbox);
+            });
+          };
 
           const sortCards = (mode) => {
-            const sorted = [...cards];
+            orderedCards = [...cards];
 
-            sorted.sort((a, b) => {
+            orderedCards.sort((a, b) => {
               const aIdx = Number(a.dataset.index || 0);
               const bIdx = Number(b.dataset.index || 0);
               const aTitle = String(a.dataset.title || "");
@@ -135,8 +220,17 @@ home_theme: alt
               return aIdx - bIdx; // newest first
             });
 
-            sorted.forEach((card) => grid.appendChild(card));
+            currentPage = 1;
+            renderCards();
+            bindImagePreview();
           };
+
+          if (lightboxClose && lightbox) {
+            lightboxClose.addEventListener("click", () => lightbox.close());
+            lightbox.addEventListener("click", (event) => {
+              if (event.target === lightbox) lightbox.close();
+            });
+          }
 
           sortSelect.addEventListener("change", () => sortCards(sortSelect.value));
           sortCards(sortSelect.value);
