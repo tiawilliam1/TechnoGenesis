@@ -25,7 +25,7 @@
     {% set pageType = meta_type or "website" %}
     {% set schemaType = schema_type or (meta_type == "article" and "ScholarlyArticle" or "WebPage") %}
     {% set logoImageUrl = site.url + site.defaultImage %}
-    {% set faviconPath = site.favicon or "/assets/img/this.png" %}
+    {% set faviconPath = site.favicon or "/favicon-32x32.png" %}
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,9 +38,10 @@
       <meta name="robots" content="index, follow" />
     {% endif %}
     <meta name="theme-color" content="{{ site.themeColor }}" />
-    <link rel="icon" href="{{ faviconPath }}" type="image/png" />
-    <link rel="shortcut icon" href="{{ faviconPath }}" type="image/png" />
-    <link rel="apple-touch-icon" href="{{ faviconPath }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+    <link rel="shortcut icon" href="{{ faviconPath }}?v=2" type="image/png" />
     <link rel="canonical" href="{{ canonicalUrl }}" />
     <link rel="alternate" hreflang="{{ site.language or 'en' }}" href="{{ canonicalUrl }}" />
     <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
