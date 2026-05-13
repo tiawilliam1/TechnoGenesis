@@ -11,6 +11,7 @@ module.exports = {
   defaultDescription:
     "Deep-tech patent intelligence for photonics, semiconductors, quantum technologies, and advanced engineering teams.",
   defaultImage: "/assets/img/TechnoGenesispreview.png",
+  favicon: "/assets/img/this.png",
   author: "Meletis Mexis",
   themeColor: "#0b1220",
   twitterHandle: "",
