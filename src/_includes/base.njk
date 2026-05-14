@@ -140,7 +140,18 @@
           <img src="{% if home_theme == 'alt' %}/assets/img/TechnoGenesispreview.png{% else %}/assets/img/otherlogo1.png{% endif %}" alt="Deep Tech logo" />
         </a>
 
-        <nav class="nav" aria-label="Primary">
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          aria-label="Toggle navigation"
+        >
+          <img class="menu-toggle-icon" src="/assets/img/menu.png" alt="" aria-hidden="true" />
+          <span class="menu-toggle-label">Menu</span>
+        </button>
+
+        <nav class="nav" id="primary-navigation" aria-label="Primary">
           <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a>
           <a href="/services/" {% if page.url == "/services/" %}aria-current="page"{% endif %}>Services</a>
           <a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a>
@@ -193,6 +204,42 @@
             hash.includes("confirmation_token=")
           ) {
             window.netlifyIdentity.open();
+          }
+        });
+      }
+
+      const siteHeader = document.querySelector(".site-header");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const primaryNav = document.querySelector("#primary-navigation");
+      const headerActions = document.querySelector(".header-actions");
+
+      if (siteHeader && menuToggle && primaryNav && headerActions) {
+        const setMenuState = (isOpen) => {
+          siteHeader.classList.toggle("menu-open", isOpen);
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+        };
+
+        const closeMenu = () => setMenuState(false);
+
+        menuToggle.addEventListener("click", () => {
+          const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+          setMenuState(!isOpen);
+        });
+
+        primaryNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMenu();
+            menuToggle.focus();
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 980) {
+            closeMenu();
           }
         });
       }
