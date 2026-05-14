@@ -4507,6 +4507,7 @@ font-weight: 500;
     .services-section-page {
       width: calc(100% - 24px);
       padding: 10px 0 12px;
+      margin-top: -6%;
     }
 
     .services-page-head {
@@ -4516,6 +4517,7 @@ font-weight: 500;
     .services-page-head h2 {
       font-size: clamp(24px, 3vw, 34px);
       line-height: 1.18;
+      margin-top: 15%;
     }
 
     .services-page-head p {
