@@ -6329,6 +6329,7 @@ font-weight: 500;
     body.home-theme-alt .about-timeline-section,
     body.home-theme-alt .about-credentials-section {
       padding: 24px 12px;
+      margin-top: -7%;
     }
 
     body.home-theme-alt .about-opening-layout {
@@ -6345,8 +6346,11 @@ font-weight: 500;
     }
 
     body.home-theme-alt .about-opening-paragraph {
-      font-size: 1rem;
-      line-height: 1.66;
+      
+      font-size: 1.2rem;
+line-height: 1.66;
+text-align: justify;
+margin-right: 5%;
     }
 
     body.home-theme-alt .about-opening-fact {
@@ -6362,6 +6366,8 @@ font-weight: 500;
     body.home-theme-alt .about-opening-hero-card {
       padding: 16px;
       border-radius: 20px;
+      margin-right: 4%;
+padding-right: 4%;
     }
 
     body.home-theme-alt .about-opening-avatar {
@@ -6401,6 +6407,10 @@ font-weight: 500;
 
     body.home-theme-alt .about-opening-facts {
       gap: 8px;
+      margin-bottom: 15%;
+margin-right: 7%;
+margin-left: 5%;
+margin-top: 7%;
     }
 
     body.home-theme-alt .about-opening-fact {
