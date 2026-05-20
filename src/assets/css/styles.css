@@ -117,7 +117,7 @@
     display: flex;
     gap: 18px;
     flex-wrap: wrap;
-    margin-right: 0;
+    margin-right: -1%;
     justify-self: center;
     justify-content: center;
   }
@@ -5401,6 +5401,7 @@ font-weight: 500;
   body.home-theme-alt .hero-copy h1 {
     color: #f6f9ff;
     text-shadow: 0 12px 28px rgba(6, 18, 44, 0.3);
+    text-align: center;
   }
 
   body.home-theme-alt .hero-word {
@@ -5432,6 +5433,8 @@ font-weight: 500;
     color: rgba(229, 238, 255, 0.9);
     margin: 0;
     text-shadow: 0 6px 18px rgba(6, 18, 44, 0.2);
+    text-align: center;
+    margin-left: 8%;
   }
 
   body.home-theme-alt .hero-cta-strip a {
@@ -6427,4 +6430,33 @@ margin-top: 7%;
       text-align: center;
     }
 
+  }
+
+  /* Shared non-home hero background image */
+  .publications-hero,
+  .services-hero,
+  .industries-hero,
+  body.home-theme-alt .about-hero--cover {
+    background:
+      radial-gradient(circle at 84% 22%, rgba(112, 172, 255, 0.2), transparent 44%),
+      radial-gradient(circle at 10% 84%, rgba(108, 158, 235, 0.14), transparent 46%),
+      linear-gradient(132deg, rgba(8, 25, 54, 0.78) 0%, rgba(8, 25, 54, 0.56) 46%, rgba(8, 25, 54, 0.62) 100%),
+      url("/assets/img/backgroundhero.png") center/cover no-repeat;
+  }
+
+  .publications-hero::before,
+  .services-hero::before,
+  .industries-hero::before,
+  body.home-theme-alt .about-hero--cover::before {
+    background: linear-gradient(
+      90deg,
+      rgba(8, 25, 54, 0.88) 0%,
+      rgba(8, 25, 54, 0.66) 30%,
+      rgba(8, 25, 54, 0.24) 56%,
+      rgba(8, 25, 54, 0.05) 74%,
+      rgba(8, 25, 54, 0) 86%
+    );
+    background-size: 100% 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
   }
