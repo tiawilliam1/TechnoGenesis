@@ -188,7 +188,10 @@
         </div>
 
         <div class="footer-bottom">
-          <small>© {{ "now" | date("yyyy") }} Meletis Mexis. All Rights Reserved.</small>
+          <div class="footer-bottom-left">
+            <small>© {{ "now" | date("yyyy") }} Meletis Mexis. All Rights Reserved.</small>
+            <a class="footer-privacy-link" href="/privacy-policy/" {% if page.url == "/privacy-policy/" %}aria-current="page"{% endif %}>Privacy Policy</a>
+          </div>
           <small>Powered by Tia William</small>
         </div>
       </div>
