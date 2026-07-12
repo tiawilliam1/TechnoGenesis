@@ -95,7 +95,7 @@
 
     {% if page.url and page.url != "/" %}
       {% if page.url.indexOf("/posts/") == 0 %}
-        {% set breadcrumbSecondName = "Publications & Projects" %}
+        {% set breadcrumbSecondName = "Publications" %}
         {% set breadcrumbSecondUrl = site.url + "/publications-projects/" %}
       {% else %}
         {% set breadcrumbSecondName = metaTitle %}
@@ -156,7 +156,7 @@
           <a href="/services/" {% if page.url == "/services/" %}aria-current="page"{% endif %}>Services</a>
           <a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a>
           <a href="/industries-clients/" {% if page.url == "/industries-clients/" %}aria-current="page"{% endif %}>Industries &amp; Use cases</a>
-          <a href="/publications-projects/" {% if page.url == "/publications-projects/" %}aria-current="page"{% endif %}>Publications &amp; Projects</a>
+          <a href="/publications-projects/" {% if page.url == "/publications-projects/" %}aria-current="page"{% endif %}>Publications</a>
         </nav>
 
         <div class="header-actions">

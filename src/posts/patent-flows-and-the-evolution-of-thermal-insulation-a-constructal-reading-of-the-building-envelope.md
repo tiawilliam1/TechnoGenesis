@@ -1,6 +1,7 @@
 ---
 title: "Patent Flows and the Evolution of Thermal Insulation: A Constructal
   Reading of the Building Envelope"
+publication_year: 2026
 abstract: >
   This paper investigates the evolution of thermal-insulation technologies in
   architecture through patent-family data, interpreting the building envelope as
@@ -11,4 +12,6 @@ abstract: >
 
   The research is based on patent data retrieved and analysed through Minesoft Origin, using patent families as the unit of analysis and earliest priority year as the temporal indicator of invention. The method combines CPC/IPC classification, keyword-based patent mining, temporal mapping, and sensitivity analysis using Y02 climate-change-mitigation tags. The corpus focuses on building-envelope technologies related to thermal and hygrothermal performance, including mineral and natural materials, fibrous insulations, synthetic foams, reflective membranes, aerogels, vacuum insulation panels, phase-change materials, bio-based systems, and adaptive envelopes. First results reveal a multi-stage trajectory: slow growth until the 1960s, a first wave linked to the 1970s energy crises, renewed growth in the 1990s, and a steep post-2010 acceleration, followed by a possible plateau around 2020–2022. This trajectory is interpreted through the constructal law and the S-curve model of technological spreading as invasion and consolidation processes. The paper argues that the history of insulation is not merely a history of better materials, but a sequence of architectural flow-design strategies through which buildings adapt to changing energetic, environmental, industrial, and climatic constraints.
 publication_link: "accepted for publication 16th Constructual Law Conference (CLC2026) "
+current_collaboration: true
+current_status: Working paper
 ---

@@ -1,6 +1,7 @@
 ---
 title: Polarization response of quantum-confined structures using
   edge-photovoltage spectroscopy
+publication_year: 2007
 abstract: >
   This study proposes a method to obtain the ratio of the fundamental TE/TM
   optical response of a quantum-confined system from the measurement of the

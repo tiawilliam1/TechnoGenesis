@@ -16,7 +16,7 @@ permalink: "articles/index.html"
 <h1>Publications</h1>
 
 {% if collections.posts and collections.posts.length %}
-  {% for post in collections.posts | reverse %}
+  {% for post in collections.posts %}
     <article class="card">
       {% set publicationUrl = post.data.publication_link or post.url %}
       <h2><a href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ post.data.title }}</a></h2>

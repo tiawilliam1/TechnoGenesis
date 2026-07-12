@@ -1,5 +1,6 @@
 ---
 title: Polariton lasing in a hybrid bulk ZnO microcavity
+publication_year: 2011
 abstract: This work demonstrates polariton lasing in a bulk ZnO planar
   microcavity under non-resonant optical pumping at a small negative detuning (δ
   ≈ −1/6 of the 130 meV vacuum Rabi splitting) and at a temperature of 120 K.

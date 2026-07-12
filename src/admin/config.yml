@@ -58,15 +58,6 @@ collections:
             name: "scientific_achievements"
             widget: "list"
             field: { label: "Achievement", name: "item", widget: "string" }
-      - label: "Publications & Projects"
-        name: "publications_page"
-        file: "src/_data/publications_topics.json"
-        fields:
-          - label: "Current Collaboration and Submission Topics"
-            name: "current_collaboration_topics"
-            widget: "list"
-            summary: "{{fields.topic}}"
-            field: { label: "Topic", name: "topic", widget: "string" }
 
   - name: "posts"
     label: "Publications"
@@ -78,7 +69,10 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Abstract", name: "abstract", widget: "text", required: false }
+      - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Publication Link", name: "publication_link", widget: "string", required: true, hint: "Full URL, e.g. https://doi.org/... or https://journal.com/article" }
+      - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
+      - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
       - { label: "Body", name: "body", widget: "markdown", required: false }
       - { label: "Tags", name: "tags", widget: "hidden", default: ["posts"] }

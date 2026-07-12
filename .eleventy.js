@@ -12,7 +12,26 @@ module.exports = function (eleventyConfig) {
 
   // Posts collection
   eleventyConfig.addCollection("posts", (collectionApi) => {
-    return collectionApi.getFilteredByGlob("src/posts/*.md");
+    const getPublicationSortTime = (item) => {
+      const dateValue = item.data.publication_date || item.data.date;
+      const parsedDate = dateValue ? new Date(dateValue).getTime() : NaN;
+
+      if (!Number.isNaN(parsedDate)) return parsedDate;
+
+      const publicationYear = Number(item.data.publication_year);
+      if (Number.isFinite(publicationYear)) {
+        return Date.UTC(publicationYear, 0, 1);
+      }
+
+      return item.date instanceof Date ? item.date.getTime() : 0;
+    };
+
+    return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
+      const dateDifference = getPublicationSortTime(a) - getPublicationSortTime(b);
+      if (dateDifference !== 0) return dateDifference;
+
+      return String(a.data.title || "").localeCompare(String(b.data.title || ""));
+    });
   });
 
   // Date filter (fixes Netlify build)

@@ -1,6 +1,7 @@
 ---
 title: Control of polarization and dipole moment in low-dimensional
   semiconductor nanostructures
+publication_year: 2009
 abstract: This work demonstrates the control of polarization and dipole moment
   in semiconductor nanostructures through nanoscale engineering of shape and
   composition. Rodlike (columnar) quantum dot (CQD) nanostructures, elongated

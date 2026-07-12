@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Publications & Projects
+title: Publications
 description: Publications, technical analyses, and research outputs from TechnoGenesis across patent intelligence and deep-tech engineering.
-meta_title: Publications and Projects in Deep-Tech Patent Intelligence
+meta_title: Publications in Deep-Tech Patent Intelligence
 meta_description: Explore publications, technical analyses, and research outputs from TechnoGenesis at the intersection of deep-tech innovation and IP strategy.
 meta_image: /assets/img/logo3.png
 meta_image_alt: Publications and projects by TechnoGenesis
@@ -12,8 +12,6 @@ home_theme: alt
 ---
 
 {% set googleScholarUrl = "https://scholar.google.com/citations?hl=en&user=FpvwoYEAAAAJ" %}
-{% set collaborationTopics = publications_topics.current_collaboration_topics or [] %}
-
 {% if collections.posts and collections.posts.length %}
   <script type="application/ld+json">
     {
@@ -22,10 +20,10 @@ home_theme: alt
       "@id": {{ (site.url + page.url + "#publication-list") | json | safe }},
       "name": {{ "TechnoGenesis Publications List" | json | safe }},
       "mainEntityOfPage": {{ (site.url + page.url) | json | safe }},
-      "itemListOrder": "https://schema.org/ItemListOrderDescending",
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
       "numberOfItems": {{ collections.posts.length }},
       "itemListElement": [
-        {% for post in collections.posts | reverse %}
+        {% for post in collections.posts %}
           {% set postUrl = post.data.publication_link or (site.url + post.url) %}
           {% set postSummary = post.data.abstract or post.data.description %}
           {% set postImagePath = post.data.image or post.data.featured_image %}
@@ -54,7 +52,7 @@ home_theme: alt
 <section class="publications-page">
   <div class="publications-hero">
     <div class="publications-hero-inner">
-      <h1 data-reveal="up">Publications & Projects</h1>
+      <h1 data-reveal="up">Publications</h1>
       <p class="publications-short" data-reveal="up" style="--reveal-delay: 80ms;">
         Research, analysis, and technical insight for deep-tech IP strategy.
       </p>
@@ -75,18 +73,55 @@ home_theme: alt
       </p>
       <div class="publications-topic-head">
         <p class="publications-topic-label">Current collaboration and submission topics</p>
-        <p class="publications-topic-note">
-          <span class="publications-update-symbol" aria-hidden="true">⚠</span>
-          Updated regularly: stay tuned for novel insights at the intersection of scientific research and patent information.
-        </p>
       </div>
 
-      {% if collaborationTopics and collaborationTopics.length %}
+      {% if collections.posts and collections.posts.length %}
         <ul class="publications-topic-list">
-          {% for topicItem in collaborationTopics %}
-            {% set topic = topicItem.topic or topicItem %}
-            {% if topic %}
-              <li>{{ topic }}</li>
+          {% for post in collections.posts | reverse %}
+            {% if post.data.current_collaboration %}
+              {% set publicationUrl = post.data.publication_link or post.url %}
+              {% set publicationImage = post.data.image or post.data.featured_image %}
+              {% set publicationBody = post.content or post.templateContent %}
+              {% set summaryText = post.data.abstract or post.data.description %}
+              <li>
+                <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
+                  <div class="publication-content">
+                    <span class="publications-topic-status">{{ post.data.current_status or "Working paper" }}</span>
+                    <h3>{{ post.data.title }}</h3>
+                    {% if summaryText or publicationBody or publicationUrl %}
+                      <details class="publications-topic-details">
+                        <summary>
+                          {% if summaryText %}
+                            <span class="publications-topic-description">{{ summaryText }}</span>
+                          {% endif %}
+                          <span class="publications-topic-toggle">
+                            <span class="publications-topic-toggle-more">{% if summaryText %}View full description{% else %}View details{% endif %}</span>
+                            <span class="publications-topic-toggle-less">Show less</span>
+                          </span>
+                        </summary>
+                        <div class="publication-body publications-topic-full-description">
+                          {% if summaryText %}
+                            <p>{{ summaryText }}</p>
+                          {% endif %}
+                          {% if publicationBody %}
+                            {{ publicationBody | safe }}
+                          {% endif %}
+                          {% if publicationUrl %}
+                            <p class="publication-link-wrap">
+                              <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>View publication</a>
+                            </p>
+                          {% endif %}
+                        </div>
+                      </details>
+                    {% endif %}
+                  </div>
+                  {% if publicationImage %}
+                    <a class="publication-media" href="{{ publicationImage }}">
+                      <img src="{{ publicationImage }}" alt="" />
+                    </a>
+                  {% endif %}
+                </article>
+              </li>
             {% endif %}
           {% endfor %}
         </ul>
@@ -120,12 +155,12 @@ home_theme: alt
 
     {% if collections.posts and collections.posts.length %}
       <div class="publications-grid" id="publications-grid">
-        {% for post in collections.posts | reverse %}
+        {% for post in collections.posts %}
           {% set publicationUrl = post.data.publication_link or post.url %}
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.content or post.templateContent %}
           <article
-            class="publication-card"
+            class="publication-card{% if not publicationImage %} publication-card--no-media{% endif %}"
             data-index="{{ loop.index0 }}"
             data-title="{{ (post.data.title or '') | lower | escape }}"
           >
@@ -244,21 +279,8 @@ home_theme: alt
             });
           };
 
-          const sortCards = (mode) => {
+          const showChronologicalCards = () => {
             orderedCards = [...cards];
-
-            orderedCards.sort((a, b) => {
-              const aIdx = Number(a.dataset.index || 0);
-              const bIdx = Number(b.dataset.index || 0);
-              const aTitle = String(a.dataset.title || "");
-              const bTitle = String(b.dataset.title || "");
-
-              if (mode === "oldest") return bIdx - aIdx;
-              if (mode === "title-asc") return aTitle.localeCompare(bTitle);
-              if (mode === "title-desc") return bTitle.localeCompare(aTitle);
-              return aIdx - bIdx; // newest first
-            });
-
             currentPage = 1;
             renderCards();
             bindImagePreview();
@@ -271,7 +293,7 @@ home_theme: alt
             });
           }
 
-          sortCards("newest");
+          showChronologicalCards();
         })();
       </script>
     {% else %}
