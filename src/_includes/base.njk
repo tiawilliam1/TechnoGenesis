@@ -1,5 +1,15 @@
 <!doctype html>
-<html lang="{{ site.language or 'en' }}">
+{% set currentLang = lang or site.language or 'en' %}
+{% set isFrench = currentLang == 'fr' %}
+{% set homeUrl = isFrench and '/fr/' or '/' %}
+{% set servicesUrl = isFrench and '/fr/services/' or '/services/' %}
+{% set aboutUrl = isFrench and '/fr/about/' or '/about/' %}
+{% set industriesUrl = isFrench and '/fr/industries-clients/' or '/industries-clients/' %}
+{% set publicationsUrl = isFrench and '/fr/publications-projects/' or '/publications-projects/' %}
+{% set contactUrl = isFrench and '/fr/contact/' or '/contact/' %}
+{% set alternateLang = isFrench and 'en' or 'fr' %}
+{% set alternateHref = alternate_url or (isFrench and '/' or '/fr/') %}
+<html lang="{{ currentLang }}">
   <head>
     {% set metaTitle = meta_title or title or site.name %}
     {% if metaTitle == site.name %}
@@ -43,12 +53,13 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
     <link rel="shortcut icon" href="{{ faviconPath }}?v=3" type="image/png" />
     <link rel="canonical" href="{{ canonicalUrl }}" />
-    <link rel="alternate" hreflang="{{ site.language or 'en' }}" href="{{ canonicalUrl }}" />
+    <link rel="alternate" hreflang="{{ currentLang }}" href="{{ canonicalUrl }}" />
+    <link rel="alternate" hreflang="{{ alternateLang }}" href="{{ site.url + alternateHref }}" />
     <link rel="alternate" hreflang="x-default" href="{{ site.url }}/" />
 
     <meta property="og:type" content="{{ pageType }}" />
     <meta property="og:site_name" content="{{ site.name }}" />
-    <meta property="og:locale" content="{{ site.locale }}" />
+    <meta property="og:locale" content="{{ locale or (isFrench and 'fr_FR' or site.locale) }}" />
     <meta property="og:title" content="{{ pageTitle }}" />
     <meta property="og:description" content="{{ metaDescription }}" />
     <meta property="og:url" content="{{ canonicalUrl }}" />
@@ -72,7 +83,7 @@
         "headline": {{ metaTitle | json | safe }},
         "description": {{ metaDescription | json | safe }},
         "url": {{ canonicalUrl | json | safe }},
-        "inLanguage": {{ (site.language or "en") | json | safe }},
+        "inLanguage": {{ currentLang | json | safe }},
         "image": {{ metaImageUrl | json | safe }},
         "mainEntityOfPage": {{ canonicalUrl | json | safe }},
         {% if meta_type == "article" and publication_link %}
@@ -110,8 +121,8 @@
             {
               "@type": "ListItem",
               "position": 1,
-              "name": {{ "Home" | json | safe }},
-              "item": {{ (site.url + "/") | json | safe }}
+              "name": {{ (isFrench and "Accueil" or "Home") | json | safe }},
+              "item": {{ (site.url + homeUrl) | json | safe }}
             },
             {
               "@type": "ListItem",
@@ -136,7 +147,7 @@
   <body{% if home_theme %} class="home-theme-{{ home_theme }}"{% endif %}>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="brand" href="/" aria-label="Deep-Tech home">
+        <a class="brand" href="{{ homeUrl }}" aria-label="TechnoGenesis home">
           <img src="{% if home_theme == 'alt' %}/assets/img/TechnoGenesispreview.png{% else %}/assets/img/otherlogo1.png{% endif %}" alt="Deep Tech logo" />
         </a>
 
@@ -152,15 +163,19 @@
         </button>
 
         <nav class="nav" id="primary-navigation" aria-label="Primary">
-          <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a>
-          <a href="/services/" {% if page.url == "/services/" %}aria-current="page"{% endif %}>Services</a>
-          <a href="/about/" {% if page.url == "/about/" %}aria-current="page"{% endif %}>About</a>
-          <a href="/industries-clients/" {% if page.url == "/industries-clients/" %}aria-current="page"{% endif %}>Industries &amp; Use cases</a>
-          <a href="/publications-projects/" {% if page.url == "/publications-projects/" %}aria-current="page"{% endif %}>Publications</a>
+          <a href="{{ homeUrl }}" {% if page.url == homeUrl %}aria-current="page"{% endif %}>{{ isFrench and "Accueil" or "Home" }}</a>
+          <a href="{{ servicesUrl }}" {% if page.url == servicesUrl %}aria-current="page"{% endif %}>Services</a>
+          <a href="{{ aboutUrl }}" {% if page.url == aboutUrl %}aria-current="page"{% endif %}>{{ isFrench and "À propos" or "About" }}</a>
+          <a href="{{ industriesUrl }}" {% if page.url == industriesUrl %}aria-current="page"{% endif %}>{{ isFrench and "Secteurs & cas d’usage" or "Industries & Use cases" }}</a>
+          <a href="{{ publicationsUrl }}" {% if page.url == publicationsUrl %}aria-current="page"{% endif %}>{{ isFrench and "Recherche & Publications" or "Publications" }}</a>
         </nav>
 
         <div class="header-actions">
-          <a class="cta-pill" href="/contact/">Contact</a>
+          <a class="lang-switch" href="{{ alternateHref }}" hreflang="{{ alternateLang }}" aria-label="{{ isFrench and 'View English version' or 'Voir la version française' }}">
+            <span class="lang-switch-icon" aria-hidden="true"></span>
+            <span>{{ isFrench and "EN" or "FR" }}</span>
+          </a>
+          <a class="cta-pill" href="{{ contactUrl }}">Contact</a>
         </div>
       </div>
     </header>
@@ -173,7 +188,7 @@
       <div class="wrap footer-inner">
         <div class="footer-top">
           <div class="footer-brand">
-            <a class="footer-logo-link" href="/" aria-label="Patent Engineer home">
+            <a class="footer-logo-link" href="{{ homeUrl }}" aria-label="TechnoGenesis home">
               <img src="{% if home_theme == 'alt' %}/assets/img/TechnoGenesispreview.png{% else %}/assets/img/otherlogo1.png{% endif %}" alt="Patent Engineer logo" />
             </a>
             
@@ -190,7 +205,7 @@
         <div class="footer-bottom">
           <div class="footer-bottom-left">
             <small>© {{ "now" | date("yyyy") }} TechnoGenesis. All Rights Reserved.</small>
-            <a class="footer-privacy-link" href="/privacy-policy/" {% if page.url == "/privacy-policy/" %}aria-current="page"{% endif %}>Privacy Policy</a>
+            <a class="footer-privacy-link" href="/privacy-policy/" {% if page.url == "/privacy-policy/" %}aria-current="page"{% endif %}>{{ isFrench and "Politique de confidentialité" or "Privacy Policy" }}</a>
           </div>
           <small>Powered by Tia William</small>
         </div>

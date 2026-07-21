@@ -1,0 +1,187 @@
+---
+layout: base.njk
+lang: fr
+locale: fr_FR
+title: Services
+description: Services techniques d'information brevets, adaptés à l'innovation portée par la physique et la mécanique et à vos décisions stratégiques de propriété intellectuelle.
+meta_title: Services de recherche brevets et stratégie PI pour technologies avancées
+meta_description: Études de brevetabilité, FTO, invalidation, cartographies brevets, veille concurrentielle et formation à la recherche brevets.
+meta_image: /assets/img/newback.jpg
+meta_image_alt: Services TechnoGenesis de stratégie brevets deep-tech
+schema_type: Service
+permalink: /fr/services/
+canonical_path: /fr/services/
+alternate_url: /services/
+home_theme: alt
+---
+
+<section class="services-page">
+  <div class="services-hero">
+    <div class="services-hero-inner">
+      <h1 data-reveal="up">Services</h1>
+      <p class="services-short" data-reveal="up" style="--reveal-delay: 80ms;">
+        Services techniques d'information brevets, adaptés à l'innovation portée par la physique et la mécanique et à vos décisions stratégiques de propriété intellectuelle.
+      </p>
+    </div>
+
+    <nav class="services-cta-strip" aria-label="Liens rapides des services">
+      <a href="#service-offerings" data-reveal="up" style="--reveal-delay: 200ms;">Tous les services</a>
+    </nav>
+  </div>
+
+  <section class="services-section-page" id="service-offerings">
+    {% set service_items = [
+      {
+        "title": "Études de brevetabilité",
+        "subline": "Évaluer la nouveauté et l'activité inventive avant le dépôt",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Recherches d'art antérieur dans les bases de données brevets mondiales et la littérature scientifique, pour évaluer la nouveauté et l'activité inventive avant le dépôt."
+          },
+          {
+            "label": "Livrables",
+            "text": "Rapport technique clair présentant l'art antérieur le plus proche, la pertinence revendication par revendication, le niveau de risque et des recommandations de formulation des revendications ou de stratégie de dépôt."
+          },
+          {
+            "label": "Résultat",
+            "text": "Dépôts rapides et défendables, moins de risques en procédure. L'identification précoce des antériorités bloquantes vous évite des procédures d'examen et de re-dépôt coûteuses."
+          }
+        ]
+      },
+      {
+        "title": "Analyse de liberté d'exploitation (FTO)",
+        "subline": "Analyse FTO technique pour identifier les brevets tiers pertinents",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Recherches techniques pour identifier les brevets de tiers pertinents pour votre produit ou procédé, et mise en correspondance de vos caractéristiques techniques avec les revendications identifiées."
+          },
+          {
+            "label": "Livrables",
+            "text": "Correspondance revendications/caractéristiques produit ; cotation de pertinence technique des brevets identifiés ; couverture des juridictions clés et du statut des brevets ; dossier technique structuré, prêt pour la revue juridique."
+          },
+          {
+            "label": "Résultat",
+            "text": "Un dossier technique rigoureux, prêt pour la revue juridique, qui donne à votre équipe PI ou à votre conseil externe tous les éléments pour décider en confiance de la liberté d'exploitation."
+          }
+        ]
+      },
+      {
+        "title": "Recherches d'antériorités & d'invalidation",
+        "subline": "Recherches d'art antérieur ciblées pour contester un brevet",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Recherches avancées dans les brevets, les publications scientifiques, la documentation technique et la littérature produit, pour trouver l'art antérieur susceptible de contester un brevet cible."
+          },
+          {
+            "label": "Livrables",
+            "text": "Dossiers d'art antérieur, claim charts annotées (tableaux de correspondance des revendications) et dossiers de preuves adaptés aux contentieux, oppositions ou négociations de licences."
+          },
+          {
+            "label": "Résultat",
+            "text": "Des positions défensives solides et un levier étayé par des preuves dans les litiges ou les négociations."
+          }
+        ]
+      },
+      {
+        "title": "Cartographie brevets & analyse de portefeuille",
+        "subline": "Cartographies concurrentielles et analyse des zones blanches",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Analyse quantitative et qualitative de portefeuilles de brevets et d'espaces technologiques."
+          },
+          {
+            "label": "Livrables",
+            "text": "Cartographies concurrentielles, identification des zones blanches, analyse de tendances et tableaux de bord visuels adaptés à vos questions stratégiques."
+          },
+          {
+            "label": "Résultat",
+            "text": "Une priorisation claire des dépôts, des cibles de licences et des axes R&D."
+          }
+        ]
+      },
+      {
+        "title": "Veille concurrentielle & technologique",
+        "subline": "Alertes en continu et briefings concurrents périodiques",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Surveillance continue des dépôts concurrents, des nouvelles publications et des alertes technologiques, alignée sur vos priorités."
+          },
+          {
+            "label": "Livrables",
+            "text": "Briefings périodiques, flux d'alertes et synthèses exécutives mettant en évidence les évolutions et opportunités significatives."
+          },
+          {
+            "label": "Résultat",
+            "text": "Une alerte précoce sur les mouvements concurrents et des éléments opportuns pour la stratégie produit et PI."
+          }
+        ]
+      },
+      {
+        "title": "Conseil technique en information brevets",
+        "subline": "Due diligence technique et stratégie de recherche pour vos opérations",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Conception de stratégies de recherche, due diligence technique et sourcing technique pour les opérations de fusion-acquisition ou de licence."
+          },
+          {
+            "label": "Livrables",
+            "text": "Mémos techniques, rapports de due diligence et recommandations d'intégration reliant les résultats brevets à la valeur business."
+          },
+          {
+            "label": "Résultat",
+            "text": "Des décisions commerciales rapides et fondées sur les preuves, dans les transactions et les licences."
+          }
+        ]
+      },
+      {
+        "title": "Formation à la recherche brevets",
+        "subline": "Ateliers pratiques sur les méthodes et outils de recherche",
+        "details": [
+          {
+            "label": "Ce que nous faisons",
+            "text": "Formations sur mesure pour les équipes R&D, ingénieurs et professionnels de la PI : bases de données, méthodologies de recherche et outils d'analyse."
+          },
+          {
+            "label": "Livrables",
+            "text": "Ateliers pratiques, exercices personnalisés sur vos technologies et modèles réutilisables pour des recherches reproductibles."
+          },
+          {
+            "label": "Résultat",
+            "text": "Une montée en compétence interne et un travail d'art antérieur en interne efficace et de haute qualité."
+          }
+        ]
+      }
+    ] %}
+
+    <div class="services-page-head" data-reveal="up">
+      <h2>Offre de services</h2>
+      <p>Nous traduisons l'ingénierie au niveau du dispositif et un savoir-faire pointu en physique en une stratégie de propriété intellectuelle claire et actionnable.</p>
+    </div>
+
+    <div class="services-list-grid services-expandable-list">
+      {% for item in service_items %}
+        <details class="services-feature-card service-expandable">
+          <summary>
+            <span class="service-expandable-title">{{ item.title }}</span>
+            <span class="service-expandable-subline">{{ item.subline }}</span>
+            <span class="service-expandable-toggle">
+              <span class="service-expandable-icon" aria-hidden="true"></span>
+              <span class="service-expandable-toggle-text">En savoir plus</span>
+            </span>
+          </summary>
+          <div class="service-expandable-body">
+            {% for detail in item.details %}
+              <p><strong>{{ detail.label }} -</strong> {{ detail.text }}</p>
+            {% endfor %}
+          </div>
+        </details>
+      {% endfor %}
+    </div>
+  </section>
+</section>

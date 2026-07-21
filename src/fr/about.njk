@@ -1,0 +1,140 @@
+---
+layout: base.njk
+lang: fr
+locale: fr_FR
+title: À propos
+description: Profil, parcours scientifique et expertise brevets deep-tech de Meletis Mexis, fondateur de TechnoGenesis.
+meta_title: À propos de Meletis Mexis, fondateur de TechnoGenesis
+meta_description: Profil scientifique et information brevets de Meletis Mexis, combinant photonique, semi-conducteurs et expertise quantique avec l'analyse stratégique de PI.
+meta_image: /assets/img/MeletisPhoto.jpg
+meta_image_alt: Photo de profil de Meletis Mexis
+schema_type: ProfilePage
+permalink: /fr/about/
+canonical_path: /fr/about/
+alternate_url: /about/
+home_theme: alt
+---
+
+{% set about_fr = {
+  "page_title": "À propos",
+  "short_intro": "Propriété intellectuelle stratégique pour les technologies avancées - Traduire la connaissance technique en brevets défendables et en avantage commercial.",
+  "full_name": "Meletis Mexis",
+  "role": "Analyste brevets · Physicien et ingénieur",
+  "opening_paragraph": "Meletis Mexis, docteur en physique, est le fondateur de TechnoGenesis. Physicien devenu professionnel de l'information brevets, il conjugue dix ans de recherche scientifique en optoélectronique quantique et huit ans d'expérience industrielle en propriété intellectuelle (PI). Ses clients accèdent directement à un physicien qui comprend la physique des dispositifs, les contraintes expérimentales et le langage des revendications — pour aligner, dès le départ, preuves techniques et stratégie PI.",
+  "quick_facts_title": "Points clés",
+  "quick_facts": [
+    "Membre du jury d'examen QPIP",
+    "Membre du CFIB — groupe francophone des experts en information brevets",
+    "Reviewer, Applied Physics Letters"
+  ],
+  "profile_image": about.profile_image,
+  "profile_image_alt": about.profile_image_alt,
+  "opening_keyline": "Accès direct à un physicien maîtrisant physique des dispositifs et langage des revendications",
+  "career_timeline_title": "Parcours",
+  "career_timeline_subline": "Parcours professionnel : certifications et expertise en photonique, mécanique et technologies quantiques.",
+  "career_timeline": [
+    {
+      "year": "2026",
+      "role": "TechnoGenesis, Fondateur",
+      "highlights": "Création de TechnoGenesis : intelligence brevets au niveau du dispositif pour l'innovation portée par la physique. Axes : recherche brevets, dossiers techniques et collaborations universitaires."
+    },
+    {
+      "year": "2026",
+      "role": "Certification PEB FC3",
+      "highlights": "Certification PEB FC3 en droit international des brevets, obtenue auprès du CIPA (Royaume-Uni)."
+    },
+    {
+      "year": "2025",
+      "role": "CNRS Innovation, Ingénieur brevets",
+      "highlights": "Gestion de la PI de projets en physique et mécanique ; préparation des comités brevets hebdomadaires et coordination de la stratégie de procédure avec les conseils externes."
+    },
+    {
+      "year": "2023",
+      "role": "Certification QPIP",
+      "highlights": "Obtention de la certification Qualified Patent Information Professional : reconnaissance formelle de compétences avancées en information brevets."
+    },
+    {
+      "year": "2017–2025",
+      "role": "Faurecia, Analyste brevets senior",
+      "highlights": "Direction d'une équipe d'analystes brevets au service de la R&D cockpit véhicule : études de brevetabilité, analyses FTO, cartographies et veille continue des dépôts concurrents."
+    },
+    {
+      "year": "2010–2015",
+      "role": "Chercheur CNRS ; lauréat Marie Curie",
+      "highlights": "Recherche expérimentale sur les micro-lasers et résonateurs optiques, avec une émission de l'UV profond au bleu. Conception, fabrication et caractérisation de dispositifs ; 21 publications à comité de lecture."
+    },
+    {
+      "year": "2009",
+      "role": "Doctorat en physique",
+      "highlights": "Université de Cardiff, Royaume-Uni. Recherche doctorale sur la caractérisation de lasers et d'amplificateurs optiques à confinement quantique, avec une émission du rouge au proche infrarouge, centrée sur les métriques de performance pour les télécommunications."
+    }
+  ]
+} %}
+
+<section class="about-page">
+  <div class="about-hero about-hero--cover">
+    <div class="about-hero-inner">
+      <h1 data-reveal="up">{{ about_fr.page_title }}</h1>
+      <p class="about-short" data-reveal="up" style="--reveal-delay: 120ms;">{{ about_fr.short_intro }}</p>
+    </div>
+
+    <nav class="about-cta-strip" aria-label="Liens rapides à propos">
+      <a href="#opening" data-reveal="up" style="--reveal-delay: 200ms;">Fondateur</a>
+      <a href="#career-timeline" data-reveal="up" style="--reveal-delay: 280ms;">Parcours</a>
+    </nav>
+  </div>
+
+  <section class="about-section about-opening-section" id="opening">
+    <div class="about-opening-layout">
+      <header class="about-opening-head" data-reveal="left">
+        <div class="about-opening-title">
+          <h2>{{ about_fr.full_name }}</h2>
+          <p class="about-role">{{ about_fr.role }}</p>
+        </div>
+      </header>
+
+      <div class="about-opening-story" data-reveal="up" style="--reveal-delay: 80ms;">
+        <p class="about-opening-paragraph">{{ about_fr.opening_paragraph }}</p>
+        <div class="about-opening-facts" aria-label="{{ about_fr.quick_facts_title }}">
+          {% for item in about_fr.quick_facts %}
+            <span class="about-opening-fact" data-reveal="soft" style="--reveal-delay: {{ 180 + (loop.index0 * 70) }}ms;">{{ item }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <aside class="about-opening-aside" data-reveal="right" style="--reveal-delay: 120ms;">
+        <article class="about-opening-hero-card">
+          <figure class="about-opening-avatar">
+            <img
+              src="{{ about_fr.profile_image or '/assets/img/Profilepicfiller.png' }}"
+              alt="{{ about_fr.profile_image_alt or 'Photo de profil' }}"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <p class="about-opening-hero-tag">Votre partenaire PI technique</p>
+          <p class="about-opening-keyline">{{ about_fr.opening_keyline }}</p>
+          <a class="about-opening-consult" href="/fr/contact/">Réserver une consultation</a>
+        </article>
+      </aside>
+    </div>
+  </section>
+
+  <section class="about-section about-timeline-section" id="career-timeline">
+    <div class="about-section-head" data-reveal="up">
+      <h2>{{ about_fr.career_timeline_title }}</h2>
+      <p>{{ about_fr.career_timeline_subline }}</p>
+    </div>
+    <ol class="about-timeline-list">
+      {% for item in about_fr.career_timeline %}
+        <li class="about-timeline-item" data-reveal="soft" style="--reveal-delay: {{ loop.index0 * 80 }}ms;">
+          <p class="about-timeline-year">{{ item.year }}</p>
+          <article class="about-timeline-card">
+            <h3>{{ item.role }}</h3>
+            <p>{{ item.highlights }}</p>
+          </article>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+</section>

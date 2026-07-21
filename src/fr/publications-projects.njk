@@ -1,14 +1,17 @@
 ---
 layout: base.njk
-title: Research & Publications
-description: Scientific output in photonics, semiconductors and patent information.
-meta_title: Research and Publications by TechnoGenesis
-meta_description: Explore scientific output from TechnoGenesis in photonics, semiconductors, and patent information.
+lang: fr
+locale: fr_FR
+title: Recherche & Publications
+description: Production scientifique en photonique, semi-conducteurs et information brevets.
+meta_title: Recherche et publications par TechnoGenesis
+meta_description: Production scientifique de TechnoGenesis en photonique, semi-conducteurs et information brevets.
 meta_image: /assets/img/logo3.png
-meta_image_alt: Publications and projects by TechnoGenesis
+meta_image_alt: Publications et projets par TechnoGenesis
 schema_type: CollectionPage
-permalink: /publications-projects/
-alternate_url: /fr/publications-projects/
+permalink: /fr/publications-projects/
+canonical_path: /fr/publications-projects/
+alternate_url: /publications-projects/
 home_theme: alt
 ---
 
@@ -19,7 +22,7 @@ home_theme: alt
       "@context": "https://schema.org",
       "@type": "ItemList",
       "@id": {{ (site.url + page.url + "#publication-list") | json | safe }},
-      "name": {{ "TechnoGenesis Publications List" | json | safe }},
+      "name": {{ "Liste des publications TechnoGenesis" | json | safe }},
       "mainEntityOfPage": {{ (site.url + page.url) | json | safe }},
       "itemListOrder": "https://schema.org/ItemListOrderAscending",
       "numberOfItems": {{ collections.posts.length }},
@@ -53,26 +56,26 @@ home_theme: alt
 <section class="publications-page">
   <div class="publications-hero">
     <div class="publications-hero-inner">
-      <h1 data-reveal="up">Research &amp; Publications</h1>
+      <h1 data-reveal="up">Recherche &amp; Publications</h1>
       <p class="publications-short" data-reveal="up" style="--reveal-delay: 80ms;">
-        Scientific output in photonics, semiconductors and patent information.
+        Production scientifique en photonique, semi-conducteurs et information brevets.
       </p>
     </div>
 
-    <nav class="publications-cta-strip" aria-label="Publications quick links">
-      <a href="#patent-intelligence-publications" data-reveal="up" style="--reveal-delay: 200ms;">Patent Information</a>
-      <a href="#scientific-publications" data-reveal="up" style="--reveal-delay: 280ms;">Photonics &amp; Semiconductors</a>
+    <nav class="publications-cta-strip" aria-label="Liens rapides publications">
+      <a href="#patent-intelligence-publications" data-reveal="up" style="--reveal-delay: 200ms;">Information brevets</a>
+      <a href="#scientific-publications" data-reveal="up" style="--reveal-delay: 280ms;">Photonique &amp; semi-conducteurs</a>
     </nav>
   </div>
 
   <section class="publications-info-section publications-info-section--patent" id="patent-intelligence-publications">
     <div class="publications-info-inner publications-info-inner--patent" data-reveal="up">
-      <h2>Publications in Patent Information</h2>
+      <h2>Publications en information brevets</h2>
       <p class="publications-info-emphasis">
-        Written in collaboration with academic partners, at the intersection of patent intelligence and applied physics research.
+        Élaborées en partenariat avec le monde académique, à l’intersection de l’intelligence brevets et de la recherche en physique appliquée.
       </p>
       <div class="publications-topic-head">
-        <p class="publications-topic-label">Current collaboration and submission topics</p>
+        <p class="publications-topic-label">Collaboration en cours et sujets de soumission</p>
       </div>
 
       {% if collections.patentPublications and collections.patentPublications.length %}
@@ -82,17 +85,18 @@ home_theme: alt
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.content or post.templateContent %}
             {% set summaryText = post.data.abstract or post.data.description %}
+            {% set typeLabel = post.data.publication_type == "Conference paper or presentation" and "Conférence ou présentation" or (post.data.publication_type or "Article") %}
             <li>
               <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
                 <div class="publication-content">
                   {% if post.data.current_collaboration or post.data.current_status %}
-                    <span class="publications-topic-status">{{ post.data.current_status or "Working paper" }}</span>
+                    <span class="publications-topic-status">{{ post.data.current_status or "Document de travail" }}</span>
                   {% endif %}
                   <div class="publication-meta">
                     {% if post.data.publication_year %}
                       <span class="publication-year">{{ post.data.publication_year }}</span>
                     {% endif %}
-                    <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
+                    <span class="publication-type-badge">{{ typeLabel }}</span>
                   </div>
                   <h3>{{ post.data.title }}</h3>
                   {% if summaryText or publicationBody or publicationUrl %}
@@ -102,8 +106,8 @@ home_theme: alt
                           <span class="publications-topic-description">{{ summaryText }}</span>
                         {% endif %}
                         <span class="publications-topic-toggle">
-                          <span class="publications-topic-toggle-more">{% if summaryText %}View full description{% else %}View details{% endif %}</span>
-                          <span class="publications-topic-toggle-less">Show less</span>
+                          <span class="publications-topic-toggle-more">{% if summaryText %}Voir la description complète{% else %}Voir les détails{% endif %}</span>
+                          <span class="publications-topic-toggle-less">Réduire</span>
                         </span>
                       </summary>
                       <div class="publication-body publications-topic-full-description">
@@ -115,7 +119,7 @@ home_theme: alt
                         {% endif %}
                         {% if publicationUrl %}
                           <p class="publication-link-wrap">
-                            <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>View publication</a>
+                            <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>Voir la publication</a>
                           </p>
                         {% endif %}
                       </div>
@@ -133,7 +137,7 @@ home_theme: alt
         </ul>
       {% else %}
         <ul class="publications-topic-list">
-          <li>To be filled</li>
+          <li>À compléter</li>
         </ul>
       {% endif %}
     </div>
@@ -141,23 +145,24 @@ home_theme: alt
 
   <section class="publications-info-section publications-info-section--science" id="scientific-publications">
     <div class="publications-info-inner" data-reveal="up">
-      <h2>Publications in Photonics &amp; Semiconductors</h2>
+      <h2>Publications en photonique &amp; semi-conducteurs</h2>
       <p class="publications-info-links">
-        Full publication list:
+        Liste complète des publications&nbsp;:
         <a href="{{ googleScholarUrl }}" target="_blank" rel="noopener noreferrer">Meletis / Meletios Mexis - Google Scholar</a>
       </p>
       <ul class="publications-science-highlights">
-        <li><strong>21 peer-reviewed publications</strong> in quantum optoelectronics and semiconductor lasers.</li>
-        <li>Selected highlights include Applied Physics Letters, Physical Review Letters, and Journal of Applied Physics.</li>
+        <li><strong>21 publications à comité de lecture</strong> en optoélectronique quantique et lasers à semi-conducteurs.</li>
+        <li>Parmi les revues&nbsp;: Applied Physics Letters, Physical Review Letters et Journal of Applied Physics.</li>
       </ul>
 
       {% if collections.photonicsPublications and collections.photonicsPublications.length %}
-        <p class="publications-selected-label">Selected publications</p>
+        <p class="publications-selected-label">Publications sélectionnées</p>
         <div class="publications-grid publications-grid--section" id="publications-grid">
           {% for post in collections.photonicsPublications %}
           {% set publicationUrl = post.data.publication_link or post.url %}
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.content or post.templateContent %}
+          {% set typeLabel = post.data.publication_type == "Conference paper or presentation" and "Conférence ou présentation" or (post.data.publication_type or "Article") %}
           <article
             class="publication-card{% if not publicationImage %} publication-card--no-media{% endif %}"
             data-index="{{ loop.index0 }}"
@@ -168,7 +173,7 @@ home_theme: alt
                 {% if post.data.publication_year %}
                   <span class="publication-year">{{ post.data.publication_year }}</span>
                 {% endif %}
-                <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
+                <span class="publication-type-badge">{{ typeLabel }}</span>
               </div>
               <h3>{{ post.data.title }}</h3>
               {% if post.data.abstract or post.data.description %}
@@ -181,21 +186,21 @@ home_theme: alt
               {% endif %}
               <p class="publication-link-wrap">
                 <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                  View publication
+                  Voir la publication
                 </a>
               </p>
             </div>
             {% if publicationImage %}
-              <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Open image preview for {{ post.data.title }}">
+              <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Ouvrir l’aperçu de l’image pour {{ post.data.title }}">
                 <img src="{{ publicationImage }}" alt="" />
               </a>
             {% endif %}
           </article>
         {% endfor %}
       </div>
-      <nav class="publications-pagination" id="publications-pagination" aria-label="Publications pages"></nav>
-      <dialog class="publication-lightbox" id="publication-lightbox" aria-label="Publication image preview">
-        <button type="button" class="publication-lightbox-close" id="publication-lightbox-close" aria-label="Close image preview">×</button>
+      <nav class="publications-pagination" id="publications-pagination" aria-label="Pages des publications"></nav>
+      <dialog class="publication-lightbox" id="publication-lightbox" aria-label="Aperçu de l’image de publication">
+        <button type="button" class="publication-lightbox-close" id="publication-lightbox-close" aria-label="Fermer l’aperçu">×</button>
         <img id="publication-lightbox-image" src="" alt="" />
       </dialog>
       <script>
@@ -228,7 +233,7 @@ home_theme: alt
               button.type = "button";
               button.className = "publications-page-btn";
               button.textContent = String(page);
-              button.setAttribute("aria-label", `Go to page ${page}`);
+              button.setAttribute("aria-label", `Aller à la page ${page}`);
 
               if (page === currentPage) {
                 button.classList.add("is-active");
@@ -265,7 +270,7 @@ home_theme: alt
             if (!src) return;
 
             lightboxImage.src = src;
-            lightboxImage.alt = link.dataset.imageAlt || "Publication image preview";
+            lightboxImage.alt = link.dataset.imageAlt || "Aperçu de l’image de publication";
 
             if (typeof lightbox.showModal === "function") {
               if (!lightbox.open) lightbox.showModal();
@@ -302,7 +307,7 @@ home_theme: alt
         })();
       </script>
     {% else %}
-      <p class="publications-empty">No publications yet.</p>
+      <p class="publications-empty">Aucune publication pour le moment.</p>
     {% endif %}
     </div>
   </section>

@@ -1,0 +1,68 @@
+---
+layout: base.njk
+lang: fr
+locale: fr_FR
+title: Contact
+description: Contactez TechnoGenesis pour discuter stratégie brevets deep-tech, recherche d'antériorités et soutien aux décisions PI.
+meta_title: Contacter TechnoGenesis pour un appui brevets deep-tech
+meta_description: Contactez TechnoGenesis pour discuter stratégie brevets, recherche d'antériorités et appui PI orienté décision.
+meta_image: /assets/img/logo4.png
+meta_image_alt: Contacter TechnoGenesis
+schema_type: ContactPage
+permalink: /fr/contact/
+canonical_path: /fr/contact/
+alternate_url: /contact/
+home_theme: alt
+---
+
+<section class="contact-page">
+  <section class="contact-section" id="contact-form">
+    <header class="contact-head">
+      <h1>Contact</h1>
+      <p>
+        Discutons de vos objectifs PI et deep-tech.
+      </p>
+    </header>
+
+    <div class="contact-shell">
+      <div class="contact-main">
+        <h2>Envoyer un message</h2>
+        <p class="contact-lead">
+          Indiquez votre domaine technique, le stade du projet (R&amp;D, dépôt ou contentieux) et la décision pour laquelle vous souhaitez un appui.
+        </p>
+
+        <form class="contact-form" name="contact-fr" method="POST" action="/fr/contact/success/" netlify netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact-fr" />
+          <p class="hidden-field">
+            <label>Ne remplissez pas ce champ si vous êtes humain : <input name="bot-field" /></label>
+          </p>
+
+          <label for="name">Nom</label>
+          <input id="name" name="name" type="text" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+
+          <label for="company">Entreprise</label>
+          <input id="company" name="company" type="text" />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+
+          <button type="submit" class="contact-submit">Envoyer le message</button>
+          <p class="contact-privacy-note">
+            Les informations collectées via ce formulaire sont traitées par TechnoGenesis uniquement pour répondre à votre demande. Elles sont conservées pendant 3 ans à compter du dernier contact et ne sont pas partagées avec des tiers. Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et d’effacement de vos données en écrivant à <a href="mailto:contact@technogenesis.fr">contact@technogenesis.fr</a>. Consultez notre <a href="/privacy-policy/">politique de confidentialité</a>.
+          </p>
+        </form>
+      </div>
+
+      <aside class="contact-side">
+        <h3>Contact direct</h3>
+        <p><strong>Email :</strong> <a href="mailto:contact@technogenesis.fr">contact@technogenesis.fr</a></p>
+        <p><strong>Téléphone :</strong> <a href="tel:+33 6 48 93 89 72">+33 6 48 93 89 72</a></p>
+        <p><strong>Localisation :</strong> Paris, France (services à distance dans le monde entier)</p>
+        <p><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/meletis-m-178962b0/" target="_blank" rel="noopener noreferrer">Meletis M.</a></p>
+      </aside>
+    </div>
+  </section>
+</section>
