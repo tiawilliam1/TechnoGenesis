@@ -15,11 +15,6 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--anchor-scroll-offset, 0px);
-  }
-
-  :where(section[id], h2[id], h3[id], p[id]) {
-    scroll-margin-top: var(--anchor-scroll-offset, 0px);
   }
 
   .reveal-ready [data-reveal] {
@@ -1833,7 +1828,7 @@ margin-bottom: 3%;
     padding: 20px 0 16px;
     background: linear-gradient(180deg, #f7f9ff 0%, #eef2ff 100%);
     color: #4a5781;
-   margin-top: -50px;
+    margin-top: -1px;
   }
 
   .footer-inner {
