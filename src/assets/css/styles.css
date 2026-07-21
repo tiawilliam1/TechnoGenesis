@@ -1875,6 +1875,10 @@ margin-bottom: 3%;
   }
 
   @media (max-width: 760px) {
+    .articles-preview .articles-preview-head {
+      margin-top: 0;
+    }
+
     .section-head--publications {
        margin-top: 80%;
     }
