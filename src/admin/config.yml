@@ -70,6 +70,22 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Abstract", name: "abstract", widget: "text", required: false }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
+      - label: "Publication Type"
+        name: "publication_type"
+        widget: "select"
+        default: "Article"
+        options:
+          - "Article"
+          - "Conference paper or presentation"
+        hint: "Shown as a badge next to the publication year."
+      - label: "Publication Section"
+        name: "publication_area"
+        widget: "select"
+        default: "photonics_semiconductors"
+        options:
+          - { label: "Publications in Patent Information", value: "patent_information" }
+          - { label: "Publications in Photonics & Semiconductors", value: "photonics_semiconductors" }
+        hint: "Controls which section this publication appears in."
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Publication Link", name: "publication_link", widget: "string", required: true, hint: "Full URL, e.g. https://doi.org/... or https://journal.com/article" }
       - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }

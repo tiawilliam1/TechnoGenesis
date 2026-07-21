@@ -1,9 +1,9 @@
 ---
 layout: base.njk
-title: Publications
-description: Publications, technical analyses, and research outputs from TechnoGenesis across patent intelligence and deep-tech engineering.
-meta_title: Publications in Deep-Tech Patent Intelligence
-meta_description: Explore publications, technical analyses, and research outputs from TechnoGenesis at the intersection of deep-tech innovation and IP strategy.
+title: Research & Publications
+description: Scientific output in photonics, semiconductors and patent information.
+meta_title: Research and Publications by TechnoGenesis
+meta_description: Explore scientific output from TechnoGenesis in photonics, semiconductors, and patent information.
 meta_image: /assets/img/logo3.png
 meta_image_alt: Publications and projects by TechnoGenesis
 schema_type: CollectionPage
@@ -52,77 +52,82 @@ home_theme: alt
 <section class="publications-page">
   <div class="publications-hero">
     <div class="publications-hero-inner">
-      <h1 data-reveal="up">Publications</h1>
+      <h1 data-reveal="up">Research &amp; Publications</h1>
       <p class="publications-short" data-reveal="up" style="--reveal-delay: 80ms;">
-        Research, analysis, and technical insight for deep-tech IP strategy.
+        Scientific output in photonics, semiconductors and patent information.
       </p>
     </div>
 
     <nav class="publications-cta-strip" aria-label="Publications quick links">
-      <a href="#patent-intelligence-publications" data-reveal="up" style="--reveal-delay: 200ms;">Current Work</a>
-      <a href="#scientific-publications" data-reveal="up" style="--reveal-delay: 280ms;">Publication Link</a>
-      <a href="#all-publications" data-reveal="up" style="--reveal-delay: 360ms;">View Publications</a>
+      <a href="#patent-intelligence-publications" data-reveal="up" style="--reveal-delay: 200ms;">Patent Information</a>
+      <a href="#scientific-publications" data-reveal="up" style="--reveal-delay: 280ms;">Photonics &amp; Semiconductors</a>
     </nav>
   </div>
 
   <section class="publications-info-section publications-info-section--patent" id="patent-intelligence-publications">
     <div class="publications-info-inner publications-info-inner--patent" data-reveal="up">
-      <h2>Publications in Patent Information &amp; IP Intelligence</h2>
+      <h2>Publications in Patent Information</h2>
       <p class="publications-info-emphasis">
-        <span class="publications-brand-name">TechnoGenesis</span> actively collaborates with academic partners on scientific publications at the intersection of deep-tech innovation and patent intelligence.
+        Written in collaboration with academic partners, at the intersection of patent intelligence and applied physics research.
       </p>
       <div class="publications-topic-head">
         <p class="publications-topic-label">Current collaboration and submission topics</p>
       </div>
 
-      {% if collections.posts and collections.posts.length %}
+      {% if collections.patentPublications and collections.patentPublications.length %}
         <ul class="publications-topic-list">
-          {% for post in collections.posts | reverse %}
-            {% if post.data.current_collaboration %}
-              {% set publicationUrl = post.data.publication_link or post.url %}
-              {% set publicationImage = post.data.image or post.data.featured_image %}
-              {% set publicationBody = post.content or post.templateContent %}
-              {% set summaryText = post.data.abstract or post.data.description %}
-              <li>
-                <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
-                  <div class="publication-content">
+          {% for post in collections.patentPublications %}
+            {% set publicationUrl = post.data.publication_link or post.url %}
+            {% set publicationImage = post.data.image or post.data.featured_image %}
+            {% set publicationBody = post.content or post.templateContent %}
+            {% set summaryText = post.data.abstract or post.data.description %}
+            <li>
+              <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
+                <div class="publication-content">
+                  {% if post.data.current_collaboration or post.data.current_status %}
                     <span class="publications-topic-status">{{ post.data.current_status or "Working paper" }}</span>
-                    <h3>{{ post.data.title }}</h3>
-                    {% if summaryText or publicationBody or publicationUrl %}
-                      <details class="publications-topic-details">
-                        <summary>
-                          {% if summaryText %}
-                            <span class="publications-topic-description">{{ summaryText }}</span>
-                          {% endif %}
-                          <span class="publications-topic-toggle">
-                            <span class="publications-topic-toggle-more">{% if summaryText %}View full description{% else %}View details{% endif %}</span>
-                            <span class="publications-topic-toggle-less">Show less</span>
-                          </span>
-                        </summary>
-                        <div class="publication-body publications-topic-full-description">
-                          {% if summaryText %}
-                            <p>{{ summaryText }}</p>
-                          {% endif %}
-                          {% if publicationBody %}
-                            {{ publicationBody | safe }}
-                          {% endif %}
-                          {% if publicationUrl %}
-                            <p class="publication-link-wrap">
-                              <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>View publication</a>
-                            </p>
-                          {% endif %}
-                        </div>
-                      </details>
-                    {% endif %}
-                  </div>
-                  {% if publicationImage %}
-                    <a class="publication-media" href="{{ publicationImage }}">
-                      <img src="{{ publicationImage }}" alt="" />
-                    </a>
                   {% endif %}
-                </article>
-              </li>
-            {% endif %}
+                  <div class="publication-meta">
+                    {% if post.data.publication_year %}
+                      <span class="publication-year">{{ post.data.publication_year }}</span>
+                    {% endif %}
+                    <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
+                  </div>
+                  <h3>{{ post.data.title }}</h3>
+                  {% if summaryText or publicationBody or publicationUrl %}
+                    <details class="publications-topic-details">
+                      <summary>
+                        {% if summaryText %}
+                          <span class="publications-topic-description">{{ summaryText }}</span>
+                        {% endif %}
+                        <span class="publications-topic-toggle">
+                          <span class="publications-topic-toggle-more">{% if summaryText %}View full description{% else %}View details{% endif %}</span>
+                          <span class="publications-topic-toggle-less">Show less</span>
+                        </span>
+                      </summary>
+                      <div class="publication-body publications-topic-full-description">
+                        {% if summaryText %}
+                          <p>{{ summaryText }}</p>
+                        {% endif %}
+                        {% if publicationBody %}
+                          {{ publicationBody | safe }}
+                        {% endif %}
+                        {% if publicationUrl %}
+                          <p class="publication-link-wrap">
+                            <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>View publication</a>
+                          </p>
+                        {% endif %}
+                      </div>
+                    </details>
+                  {% endif %}
+                </div>
+                {% if publicationImage %}
+                  <a class="publication-media" href="{{ publicationImage }}">
+                    <img src="{{ publicationImage }}" alt="" />
+                  </a>
+                {% endif %}
+              </article>
+            </li>
           {% endfor %}
         </ul>
       {% else %}
@@ -135,27 +140,20 @@ home_theme: alt
 
   <section class="publications-info-section publications-info-section--science" id="scientific-publications">
     <div class="publications-info-inner" data-reveal="up">
-      <h2>Scientific Publications in Photonics &amp; Semiconductors</h2>
+      <h2>Publications in Photonics &amp; Semiconductors</h2>
       <p class="publications-info-links">
         Full publication list:
         <a href="{{ googleScholarUrl }}" target="_blank" rel="noopener noreferrer">Meletis / Meletios Mexis - Google Scholar</a>
       </p>
       <ul class="publications-science-highlights">
-        <li><strong>21 peer-reviewed publications</strong> in quantum optoelectronics, GaN-based devices, and semiconductor lasers.</li>
+        <li><strong>21 peer-reviewed publications</strong> in quantum optoelectronics and semiconductor lasers.</li>
         <li>Selected highlights include Applied Physics Letters, Physical Review Letters, and Journal of Applied Physics.</li>
       </ul>
-    </div>
-  </section>
 
-  <section class="publications-section publications-section--list" id="all-publications">
-    <div class="publications-head" data-reveal="up">
-      <h2>All Publications</h2>
-      <p>Selected outputs spanning patent intelligence, deep-tech analysis, and strategic interpretation.</p>
-    </div>
-
-    {% if collections.posts and collections.posts.length %}
-      <div class="publications-grid" id="publications-grid">
-        {% for post in collections.posts %}
+      {% if collections.photonicsPublications and collections.photonicsPublications.length %}
+        <p class="publications-selected-label">Selected publications</p>
+        <div class="publications-grid publications-grid--section" id="publications-grid">
+          {% for post in collections.photonicsPublications %}
           {% set publicationUrl = post.data.publication_link or post.url %}
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.content or post.templateContent %}
@@ -165,6 +163,12 @@ home_theme: alt
             data-title="{{ (post.data.title or '') | lower | escape }}"
           >
             <div class="publication-content">
+              <div class="publication-meta">
+                {% if post.data.publication_year %}
+                  <span class="publication-year">{{ post.data.publication_year }}</span>
+                {% endif %}
+                <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
+              </div>
               <h3>{{ post.data.title }}</h3>
               {% if post.data.abstract or post.data.description %}
                 <p>{{ post.data.abstract or post.data.description }}</p>
@@ -299,5 +303,6 @@ home_theme: alt
     {% else %}
       <p class="publications-empty">No publications yet.</p>
     {% endif %}
+    </div>
   </section>
 </section>

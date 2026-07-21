@@ -10,27 +10,49 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/android-chrome-512x512.png");
   eleventyConfig.addPassthroughCopy("src/_redirects");
 
-  // Posts collection
-  eleventyConfig.addCollection("posts", (collectionApi) => {
-    const getPublicationSortTime = (item) => {
-      const dateValue = item.data.publication_date || item.data.date;
-      const parsedDate = dateValue ? new Date(dateValue).getTime() : NaN;
+  const getPublicationSortTime = (item) => {
+    const dateValue = item.data.publication_date || item.data.date;
+    const parsedDate = dateValue ? new Date(dateValue).getTime() : NaN;
 
-      if (!Number.isNaN(parsedDate)) return parsedDate;
+    if (!Number.isNaN(parsedDate)) return parsedDate;
 
-      const publicationYear = Number(item.data.publication_year);
-      if (Number.isFinite(publicationYear)) {
-        return Date.UTC(publicationYear, 0, 1);
-      }
+    const publicationYear = Number(item.data.publication_year);
+    if (Number.isFinite(publicationYear)) {
+      return Date.UTC(publicationYear, 0, 1);
+    }
 
-      return item.date instanceof Date ? item.date.getTime() : 0;
-    };
+    return item.date instanceof Date ? item.date.getTime() : 0;
+  };
 
+  const getPublicationArea = (item) => {
+    if (item.data.publication_area) return item.data.publication_area;
+    if (item.data.current_collaboration) return "patent_information";
+    return "photonics_semiconductors";
+  };
+
+  const getSortedPublications = (collectionApi) => {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       const dateDifference = getPublicationSortTime(a) - getPublicationSortTime(b);
       if (dateDifference !== 0) return dateDifference;
 
       return String(a.data.title || "").localeCompare(String(b.data.title || ""));
+    });
+  };
+
+  // Posts collection
+  eleventyConfig.addCollection("posts", (collectionApi) => {
+    return getSortedPublications(collectionApi);
+  });
+
+  eleventyConfig.addCollection("patentPublications", (collectionApi) => {
+    return getSortedPublications(collectionApi).filter((item) => {
+      return getPublicationArea(item) === "patent_information";
+    });
+  });
+
+  eleventyConfig.addCollection("photonicsPublications", (collectionApi) => {
+    return getSortedPublications(collectionApi).filter((item) => {
+      return getPublicationArea(item) === "photonics_semiconductors";
     });
   });
 

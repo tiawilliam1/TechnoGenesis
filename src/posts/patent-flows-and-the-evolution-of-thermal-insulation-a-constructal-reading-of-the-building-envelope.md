@@ -2,6 +2,8 @@
 title: "Patent Flows and the Evolution of Thermal Insulation: A Constructal
   Reading of the Building Envelope"
 publication_year: 2026
+publication_type: Conference paper or presentation
+publication_area: patent_information
 abstract: >
   This paper investigates the evolution of thermal-insulation technologies in
   architecture through patent-family data, interpreting the building envelope as

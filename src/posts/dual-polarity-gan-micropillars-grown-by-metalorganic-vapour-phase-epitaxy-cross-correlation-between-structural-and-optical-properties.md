@@ -2,6 +2,8 @@
 title: "Dual-polarity GaN micropillars grown by metalorganic vapour phase
   epitaxy: Cross-correlation between structural and optical properties"
 publication_year: 2014
+publication_type: Article
+publication_area: photonics_semiconductors
 abstract: This study investigates self-assembled, catalyst-free GaN micropillars
   (μpillars) grown on (0001) sapphire substrates by metalorganic vapour phase
   epitaxy (MOVPE). Transmission electron microscopy (TEM) and KOH chemical

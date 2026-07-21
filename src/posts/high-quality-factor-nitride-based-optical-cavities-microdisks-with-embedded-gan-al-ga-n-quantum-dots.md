@@ -2,6 +2,8 @@
 title: "High quality factor nitride-based optical cavities: microdisks with
   embedded GaN/Al(Ga)N quantum dots"
 publication_year: 2011
+publication_type: Article
+publication_area: photonics_semiconductors
 abstract: This work reports a considerable improvement in the optical quality
   factor (Q) of GaN-based microdisk (μ-disk) resonators embedding GaN quantum
   dots (QDs) grown on AlN and AlGaN barriers. Room-temperature photoluminescence

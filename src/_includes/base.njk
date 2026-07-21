@@ -215,6 +215,13 @@
       const menuToggle = document.querySelector(".menu-toggle");
       const primaryNav = document.querySelector("#primary-navigation");
       const headerActions = document.querySelector(".header-actions");
+      const updateAnchorScrollOffset = () => {
+        const offset = siteHeader ? Math.ceil(siteHeader.getBoundingClientRect().height) : 0;
+        document.documentElement.style.setProperty("--anchor-scroll-offset", `${offset}px`);
+      };
+
+      updateAnchorScrollOffset();
+      window.addEventListener("resize", updateAnchorScrollOffset);
 
       if (siteHeader && menuToggle && primaryNav && headerActions) {
         const setMenuState = (isOpen) => {
@@ -294,8 +301,9 @@
 
           event.preventDefault();
 
+          const scrollOffset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--anchor-scroll-offset")) || 0;
           const startY = window.scrollY;
-          const targetY = target.getBoundingClientRect().top + window.scrollY - 16;
+          const targetY = target.getBoundingClientRect().top + window.scrollY - scrollOffset;
           const duration = 1200;
           const startTime = performance.now();
 
