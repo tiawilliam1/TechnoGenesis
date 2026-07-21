@@ -2782,6 +2782,7 @@ margin-bottom: 5%;
       linear-gradient(132deg, #12315f 0%, #1a3f72 48%, #1f4f8b 100%);
     border-top: 1px solid #163d6d;
     border-bottom: 1px solid #163d6d;
+    margin-bottom: -6%;
   }
 
   .publications-info-section--science {
