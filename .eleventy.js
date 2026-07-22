@@ -32,7 +32,7 @@ module.exports = function (eleventyConfig) {
 
   const getSortedPublications = (collectionApi) => {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
-      const dateDifference = getPublicationSortTime(a) - getPublicationSortTime(b);
+      const dateDifference = getPublicationSortTime(b) - getPublicationSortTime(a);
       if (dateDifference !== 0) return dateDifference;
 
       return String(a.data.title || "").localeCompare(String(b.data.title || ""));

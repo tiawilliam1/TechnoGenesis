@@ -21,7 +21,7 @@ home_theme: alt
       "@id": {{ (site.url + page.url + "#publication-list") | json | safe }},
       "name": {{ "TechnoGenesis Publications List" | json | safe }},
       "mainEntityOfPage": {{ (site.url + page.url) | json | safe }},
-      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListOrder": "https://schema.org/ItemListOrderDescending",
       "numberOfItems": {{ collections.posts.length }},
       "itemListElement": [
         {% for post in collections.posts %}

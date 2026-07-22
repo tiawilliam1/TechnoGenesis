@@ -184,7 +184,7 @@ Semiconductor physics, optoelectronics, and quantum devices are highly specialis
 
   {% if collections.posts and collections.posts.length %}
     <div class="cards cards--publications-preview">
-      {% for post in collections.posts | reverse %}
+      {% for post in collections.posts %}
         {% if loop.index0 < 3 %}
           <article class="card publication-preview-card">
             {% set publicationUrl = post.data.publication_link or post.url %}
