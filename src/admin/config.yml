@@ -87,8 +87,8 @@ collections:
           - { label: "Publications in Photonics & Semiconductors", value: "photonics_semiconductors" }
         hint: "Controls which section this publication appears in."
       - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Publication Link", name: "publication_link", widget: "string", required: true, hint: "Full URL, e.g. https://doi.org/... or https://journal.com/article" }
+      - { label: "Publication Link", name: "publication_link", widget: "string", required: false, hint: "Optional. Use a full URL when available; working papers can be published without a link." }
       - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
       - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
-      - { label: "Body", name: "body", widget: "markdown", required: false }
+      - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
       - { label: "Tags", name: "tags", widget: "hidden", default: ["posts"] }
