@@ -8,8 +8,15 @@ layout: base.njk
   {% if image or featured_image %}
     <img src="{{ image or featured_image }}" alt="" style="max-width:100%; border-radius:12px; margin: 12px 0;" />
   {% endif %}
-  {% if publication_link %}
-    <p><a href="{{ publication_link }}" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+  {% set publicationTarget = "" %}
+  {% if publication_file %}
+    {% set publicationTarget = publication_file %}
+  {% elif publication_link and (publication_link | isPublicationTarget) %}
+    {% set publicationTarget = publication_link %}
+  {% endif %}
+  {% set publicationButtonEnabled = publicationTarget and publication_button_enabled != false %}
+  {% if publicationButtonEnabled %}
+    <p><a href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publication_button_label or "Read publication" }}</a></p>
   {% endif %}
   <div>
     {{ content | safe }}

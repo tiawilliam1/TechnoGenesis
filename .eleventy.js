@@ -25,6 +25,7 @@ module.exports = function (eleventyConfig) {
   };
 
   const getPublicationArea = (item) => {
+    if (item.data.publication_area === "blog") return "further_insights";
     if (item.data.publication_area) return item.data.publication_area;
     if (item.data.current_collaboration) return "patent_information";
     return "photonics_semiconductors";
@@ -56,9 +57,27 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection("homePublications", (collectionApi) => {
+    return getSortedPublications(collectionApi).filter((item) => {
+      return getPublicationArea(item) !== "further_insights";
+    });
+  });
+
+  eleventyConfig.addCollection("furtherInsightsPublications", (collectionApi) => {
+    return getSortedPublications(collectionApi).filter((item) => {
+      return getPublicationArea(item) === "further_insights";
+    });
+  });
+
   // Date filter (fixes Netlify build)
   eleventyConfig.addFilter("date", () => new Date().getFullYear());
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+  eleventyConfig.addFilter("isPublicationTarget", (value) => {
+    if (typeof value !== "string") return false;
+
+    const target = value.trim();
+    return /^(https?:\/\/|mailto:|tel:|\/)/i.test(target);
+  });
 
   return {
     dir: {

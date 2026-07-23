@@ -86,7 +86,7 @@
         "inLanguage": {{ currentLang | json | safe }},
         "image": {{ metaImageUrl | json | safe }},
         "mainEntityOfPage": {{ canonicalUrl | json | safe }},
-        {% if meta_type == "article" and publication_link %}
+        {% if meta_type == "article" and publication_link and (publication_link | isPublicationTarget) %}
         "sameAs": {{ publication_link | json | safe }},
         {% endif %}
         "author": {

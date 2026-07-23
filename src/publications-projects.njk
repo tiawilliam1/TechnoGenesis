@@ -25,7 +25,16 @@ home_theme: alt
       "numberOfItems": {{ collections.posts.length }},
       "itemListElement": [
         {% for post in collections.posts %}
-          {% set postUrl = post.data.publication_link or (site.url + post.url) %}
+          {% set postUrl = site.url + post.url %}
+          {% if post.data.publication_file %}
+            {% if post.data.publication_file[0] == "/" %}
+              {% set postUrl = site.url + post.data.publication_file %}
+            {% else %}
+              {% set postUrl = post.data.publication_file %}
+            {% endif %}
+          {% elif post.data.publication_link and (post.data.publication_link | isPublicationTarget) %}
+            {% set postUrl = post.data.publication_link %}
+          {% endif %}
           {% set postSummary = post.data.abstract or post.data.description %}
           {% set postImagePath = post.data.image or post.data.featured_image %}
           {% if postImagePath and postImagePath[0] == "/" %}
@@ -62,6 +71,7 @@ home_theme: alt
     <nav class="publications-cta-strip" aria-label="Publications quick links">
       <a href="#patent-intelligence-publications" data-reveal="up" style="--reveal-delay: 200ms;">Patent Information</a>
       <a href="#scientific-publications" data-reveal="up" style="--reveal-delay: 280ms;">Photonics &amp; Semiconductors</a>
+      <a href="#further-insights" data-reveal="up" style="--reveal-delay: 360ms;">Further Insights</a>
     </nav>
   </div>
 
@@ -78,7 +88,16 @@ home_theme: alt
       {% if collections.patentPublications and collections.patentPublications.length %}
         <ul class="publications-topic-list">
           {% for post in collections.patentPublications %}
-            {% set publicationUrl = post.data.publication_link or post.url %}
+            {% set publicationLink = post.data.publication_link %}
+            {% set publicationFile = post.data.publication_file %}
+            {% set publicationTarget = "" %}
+            {% if publicationFile %}
+              {% set publicationTarget = publicationFile %}
+            {% elif publicationLink and (publicationLink | isPublicationTarget) %}
+              {% set publicationTarget = publicationLink %}
+            {% endif %}
+            {% set publicationButtonEnabled = publicationTarget and post.data.publication_button_enabled != false %}
+            {% set publicationButtonLabel = post.data.publication_button_label or "View publication" %}
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.content or post.templateContent %}
             {% set summaryText = post.data.abstract or post.data.description %}
@@ -95,7 +114,7 @@ home_theme: alt
                     <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
                   </div>
                   <h3>{{ post.data.title }}</h3>
-                  {% if summaryText or publicationBody or publicationUrl %}
+                  {% if summaryText or publicationBody or publicationButtonEnabled %}
                     <details class="publications-topic-details">
                       <summary>
                         {% if summaryText %}
@@ -113,9 +132,9 @@ home_theme: alt
                         {% if publicationBody %}
                           {{ publicationBody | safe }}
                         {% endif %}
-                        {% if publicationUrl %}
+                        {% if publicationButtonEnabled %}
                           <p class="publication-link-wrap">
-                            <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>View publication</a>
+                            <a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publicationButtonLabel }}</a>
                           </p>
                         {% endif %}
                       </div>
@@ -155,7 +174,16 @@ home_theme: alt
         <p class="publications-selected-label">Selected publications</p>
         <div class="publications-grid publications-grid--section" id="publications-grid">
           {% for post in collections.photonicsPublications %}
-          {% set publicationUrl = post.data.publication_link or post.url %}
+          {% set publicationLink = post.data.publication_link %}
+          {% set publicationFile = post.data.publication_file %}
+          {% set publicationTarget = "" %}
+          {% if publicationFile %}
+            {% set publicationTarget = publicationFile %}
+          {% elif publicationLink and (publicationLink | isPublicationTarget) %}
+            {% set publicationTarget = publicationLink %}
+          {% endif %}
+          {% set publicationButtonEnabled = publicationTarget and post.data.publication_button_enabled != false %}
+          {% set publicationButtonLabel = post.data.publication_button_label or "View publication" %}
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.content or post.templateContent %}
           <article
@@ -179,11 +207,13 @@ home_theme: alt
                   {{ publicationBody | safe }}
                 </div>
               {% endif %}
-              <p class="publication-link-wrap">
-                <a class="publication-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>
-                  View publication
-                </a>
-              </p>
+              {% if publicationButtonEnabled %}
+                <p class="publication-link-wrap">
+                  <a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">
+                    {{ publicationButtonLabel }}
+                  </a>
+                </p>
+              {% endif %}
             </div>
             {% if publicationImage %}
               <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Open image preview for {{ post.data.title }}">
@@ -304,6 +334,70 @@ home_theme: alt
     {% else %}
       <p class="publications-empty">No publications yet.</p>
     {% endif %}
+    </div>
+  </section>
+
+  <section class="publications-info-section publications-info-section--insights" id="further-insights">
+    <div class="publications-info-inner" data-reveal="up">
+      <h2>Further Insights</h2>
+      <p class="publications-info-emphasis">
+        Additional perspectives, updates, talks, and applied research notes connected to deep-tech patent intelligence.
+      </p>
+
+      {% if collections.furtherInsightsPublications and collections.furtherInsightsPublications.length %}
+        <div class="publications-grid publications-grid--section">
+          {% for post in collections.furtherInsightsPublications %}
+            {% set publicationLink = post.data.publication_link %}
+            {% set publicationFile = post.data.publication_file %}
+            {% set publicationTarget = "" %}
+            {% if publicationFile %}
+              {% set publicationTarget = publicationFile %}
+            {% elif publicationLink and (publicationLink | isPublicationTarget) %}
+              {% set publicationTarget = publicationLink %}
+            {% endif %}
+            {% set publicationButtonEnabled = publicationTarget and post.data.publication_button_enabled != false %}
+            {% set publicationButtonLabel = post.data.publication_button_label or "View publication" %}
+            {% set publicationImage = post.data.image or post.data.featured_image %}
+            {% set publicationBody = post.content or post.templateContent %}
+            <article class="publication-card{% if not publicationImage %} publication-card--no-media{% endif %}">
+              <div class="publication-content">
+                <div class="publication-meta">
+                  {% if post.data.publication_year %}
+                    <span class="publication-year">{{ post.data.publication_year }}</span>
+                  {% endif %}
+                  <span class="publication-type-badge">{{ post.data.publication_type or "Insight" }}</span>
+                </div>
+                <h3>{{ post.data.title }}</h3>
+                {% if post.data.abstract or post.data.description %}
+                  <p>{{ post.data.abstract or post.data.description }}</p>
+                {% endif %}
+                {% if publicationBody %}
+                  <details class="publications-insight-details">
+                    <summary>Open full text</summary>
+                    <div class="publication-body publications-insight-full-text">
+                      {{ publicationBody | safe }}
+                    </div>
+                  </details>
+                {% endif %}
+                {% if publicationButtonEnabled %}
+                  <p class="publication-link-wrap">
+                    <a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">
+                      {{ publicationButtonLabel }}
+                    </a>
+                  </p>
+                {% endif %}
+              </div>
+              {% if publicationImage %}
+                <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Open image preview for {{ post.data.title }}">
+                  <img src="{{ publicationImage }}" alt="" />
+                </a>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="publications-empty">No further insights yet.</p>
+      {% endif %}
     </div>
   </section>
 </section>

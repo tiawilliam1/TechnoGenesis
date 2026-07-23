@@ -18,14 +18,29 @@ permalink: "articles/index.html"
 {% if collections.posts and collections.posts.length %}
   {% for post in collections.posts %}
     <article class="card">
-      {% set publicationUrl = post.data.publication_link or post.url %}
-      <h2><a href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ post.data.title }}</a></h2>
+      {% set publicationLink = post.data.publication_link %}
+      {% set publicationFile = post.data.publication_file %}
+      {% set publicationTarget = "" %}
+      {% if publicationFile %}
+        {% set publicationTarget = publicationFile %}
+      {% elif publicationLink and (publicationLink | isPublicationTarget) %}
+        {% set publicationTarget = publicationLink %}
+      {% endif %}
+      {% set publicationButtonEnabled = publicationTarget and post.data.publication_button_enabled != false %}
+      {% set publicationButtonLabel = post.data.publication_button_label or "Read publication" %}
+      <h2>
+        {% if publicationButtonEnabled %}
+          <a href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ post.data.title }}</a>
+        {% else %}
+          {{ post.data.title }}
+        {% endif %}
+      </h2>
       {% if post.data.abstract or post.data.description %}<p>{{ post.data.abstract or post.data.description }}</p>{% endif %}
       {% if post.data.image or post.data.featured_image %}
         <img src="{{ post.data.image or post.data.featured_image }}" alt="" />
       {% endif %}
-      {% if post.data.publication_link %}
-        <p><a href="{{ post.data.publication_link }}" target="_blank" rel="noopener noreferrer">Read publication</a></p>
+      {% if publicationButtonEnabled %}
+        <p><a href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publicationButtonLabel }}</a></p>
       {% endif %}
     </article>
   {% endfor %}

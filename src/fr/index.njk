@@ -188,24 +188,47 @@ home_theme: alt
     <a href="/fr/publications-projects/">Voir toutes les publications →</a>
   </div>
 
-  {% if collections.posts and collections.posts.length %}
+  {% if collections.homePublications and collections.homePublications.length %}
     <div class="cards cards--publications-preview">
-      {% for post in collections.posts %}
+      {% for post in collections.homePublications %}
         {% if loop.index0 < 3 %}
           <article class="card publication-preview-card">
-            {% set publicationUrl = post.data.publication_link or post.url %}
+            {% set publicationLink = post.data.publication_link %}
+            {% set publicationFile = post.data.publication_file %}
+            {% set publicationTarget = "" %}
+            {% if publicationFile %}
+              {% set publicationTarget = publicationFile %}
+            {% elif publicationLink and (publicationLink | isPublicationTarget) %}
+              {% set publicationTarget = publicationLink %}
+            {% endif %}
+            {% set publicationButtonEnabled = publicationTarget and post.data.publication_button_enabled != false %}
+            {% set publicationButtonLabel = post.data.publication_button_label_fr or post.data.publication_button_label or "Lire la publication" %}
             {% set summaryText = post.data.abstract or post.data.description %}
             <div class="publication-preview-content">
-              <h3><a href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ post.data.title }}</a></h3>
+              <h3>
+                {% if publicationButtonEnabled %}
+                  <a href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ post.data.title }}</a>
+                {% else %}
+                  {{ post.data.title }}
+                {% endif %}
+              </h3>
               {% if summaryText %}
                 <p class="publication-preview-excerpt">{{ summaryText }}</p>
               {% endif %}
             </div>
-            <a class="publication-preview-link" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>Lire la publication →</a>
+            {% if publicationButtonEnabled %}
+              <a class="publication-preview-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publicationButtonLabel }} →</a>
+            {% endif %}
             {% if post.data.image or post.data.featured_image %}
-              <a class="publication-preview-media" href="{{ publicationUrl }}" {% if post.data.publication_link %}target="_blank" rel="noopener noreferrer"{% endif %}>
+              {% if publicationButtonEnabled %}
+              <a class="publication-preview-media" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">
                 <img src="{{ post.data.image or post.data.featured_image }}" alt="" />
               </a>
+              {% else %}
+                <div class="publication-preview-media">
+                  <img src="{{ post.data.image or post.data.featured_image }}" alt="" />
+                </div>
+              {% endif %}
             {% endif %}
           </article>
         {% endif %}
