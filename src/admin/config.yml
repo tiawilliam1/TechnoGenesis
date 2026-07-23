@@ -83,8 +83,6 @@ collections:
       - { label: "Enable Publication Button", name: "publication_button_enabled", widget: "boolean", default: true, required: false, hint: "Turn this off when the publication, slides, or link should not be clickable yet." }
       - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: View publication, View slides, Download abstract, Conference page." }
       - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
-      - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
-      - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
       - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
 
   - name: "photonics_semiconductors_publications"
@@ -111,6 +109,8 @@ collections:
       - { label: "Enable Publication Button", name: "publication_button_enabled", widget: "boolean", default: true, required: false, hint: "Turn this off when the publication, slides, or link should not be clickable yet." }
       - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: View publication, View slides, Download abstract, Conference page." }
       - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
+      - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
+      - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
       - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
 
   - name: "further_insights_publications"
