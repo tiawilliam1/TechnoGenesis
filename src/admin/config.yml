@@ -59,12 +59,14 @@ collections:
             widget: "list"
             field: { label: "Achievement", name: "item", widget: "string" }
 
-  - name: "posts"
-    label: "Publications"
+  - name: "patent_information_publications"
+    label: "1. Publications in Patent Information"
     folder: "src/posts"
     create: true
     editor:
       preview: false
+    filter: { field: "publication_area", value: "patent_information" }
+    summary: "{{publication_year}} — {{title}}"
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
@@ -72,17 +74,9 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Short preview shown before the full text, especially in Further Insights." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
-      - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Article", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
+      - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Keynote presentation", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
       - { label: "Publication Type / Format (French)", name: "publication_type_fr", widget: "string", required: false, hint: "Optional French badge text. If empty, the main type is used." }
-      - label: "Publication Section"
-        name: "publication_area"
-        widget: "select"
-        default: "photonics_semiconductors"
-        options:
-          - { label: "Publications in Patent Information", value: "patent_information" }
-          - { label: "Publications in Photonics & Semiconductors", value: "photonics_semiconductors" }
-          - { label: "Further Insights", value: "further_insights" }
-        hint: "Controls which section this publication appears in."
+      - { label: "Section", name: "publication_area", widget: "hidden", default: "patent_information" }
       - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Publication Link", name: "publication_link", widget: "string", required: false, hint: "Optional. Use a full URL when available; working papers can be published without a link." }
       - { label: "Publication File / Slides PDF", name: "publication_file", widget: "file", required: false, hint: "Optional. Upload slides, an abstract, or a PDF. This can be used instead of an external link." }
@@ -92,3 +86,55 @@ collections:
       - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
       - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
       - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
+
+  - name: "photonics_semiconductors_publications"
+    label: "2. Publications in Photonics & Semiconductors"
+    folder: "src/posts"
+    create: true
+    editor:
+      preview: false
+    filter: { field: "publication_area", value: "photonics_semiconductors" }
+    summary: "{{publication_year}} — {{title}}"
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Short preview shown on cards and previews." }
+      - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
+      - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Article", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
+      - { label: "Publication Type / Format (French)", name: "publication_type_fr", widget: "string", required: false, hint: "Optional French badge text. If empty, the main type is used." }
+      - { label: "Section", name: "publication_area", widget: "hidden", default: "photonics_semiconductors" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Publication Link", name: "publication_link", widget: "string", required: false, hint: "Optional. Use a full URL when available." }
+      - { label: "Publication File / Slides PDF", name: "publication_file", widget: "file", required: false, hint: "Optional. Upload slides, an abstract, or a PDF. This can be used instead of an external link." }
+      - { label: "Enable Publication Button", name: "publication_button_enabled", widget: "boolean", default: true, required: false, hint: "Turn this off when the publication, slides, or link should not be clickable yet." }
+      - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: View publication, View slides, Download abstract, Conference page." }
+      - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
+      - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
+
+  - name: "further_insights_publications"
+    label: "3. Further Insights / Prospectives"
+    folder: "src/posts"
+    create: true
+    editor:
+      preview: false
+    filter: { field: "publication_area", value: "further_insights" }
+    summary: "{{publication_year}} — {{title}}"
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Short Preview", name: "abstract", widget: "text", required: false, hint: "Only this preview shows before readers open the full text." }
+      - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep insights in chronological order." }
+      - { label: "Insight Type / Format", name: "publication_type", widget: "string", default: "Article proposition", required: false, hint: "Free text shown as a badge, e.g. Article proposition, Note, Talk, Commentary." }
+      - { label: "Insight Type / Format (French)", name: "publication_type_fr", widget: "string", default: "Proposition d’article", required: false, hint: "Optional French badge text. If empty, the main type is used." }
+      - { label: "Section", name: "publication_area", widget: "hidden", default: "further_insights" }
+      - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "External Link", name: "publication_link", widget: "string", required: false, hint: "Optional. Use a full URL when available." }
+      - { label: "Document / PDF / Slides", name: "publication_file", widget: "file", required: false, hint: "Optional. Upload a document, slides, abstract, or PDF." }
+      - { label: "Enable Button", name: "publication_button_enabled", widget: "boolean", default: true, required: false, hint: "Turn this off when the document or link should not be clickable yet." }
+      - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: Download document, View slides, Read article." }
+      - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
+      - { label: "Full Text", name: "body", widget: "text", required: false, hint: "This opens when readers click Open full text / Lire le texte complet. Use **bold text** for blue section headings." }
