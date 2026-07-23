@@ -31,6 +31,10 @@ module.exports = function (eleventyConfig) {
     return "photonics_semiconductors";
   };
 
+  const isCurrentCollaboration = (item) => {
+    return item.data.current_collaboration === true || item.data.current_collaboration === "true";
+  };
+
   const getSortedPublications = (collectionApi) => {
     return collectionApi.getFilteredByGlob("src/posts/*.md").sort((a, b) => {
       const dateDifference = getPublicationSortTime(b) - getPublicationSortTime(a);
@@ -54,6 +58,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("photonicsPublications", (collectionApi) => {
     return getSortedPublications(collectionApi).filter((item) => {
       return getPublicationArea(item) === "photonics_semiconductors";
+    });
+  });
+
+  eleventyConfig.addCollection("patentTopicPublications", (collectionApi) => {
+    return getSortedPublications(collectionApi).filter((item) => {
+      return getPublicationArea(item) === "patent_information" || isCurrentCollaboration(item);
     });
   });
 

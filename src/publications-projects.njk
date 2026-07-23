@@ -85,9 +85,9 @@ home_theme: alt
         <p class="publications-topic-label">Current collaboration and submission topics</p>
       </div>
 
-      {% if collections.patentPublications and collections.patentPublications.length %}
+      {% if collections.patentTopicPublications and collections.patentTopicPublications.length %}
         <ul class="publications-topic-list">
-          {% for post in collections.patentPublications %}
+          {% for post in collections.patentTopicPublications %}
             {% set publicationLink = post.data.publication_link %}
             {% set publicationFile = post.data.publication_file %}
             {% set publicationTarget = "" %}
