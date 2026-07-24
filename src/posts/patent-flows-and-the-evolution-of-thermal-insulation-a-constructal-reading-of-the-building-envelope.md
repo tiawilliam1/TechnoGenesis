@@ -11,9 +11,9 @@ abstract: >-
   This paper investigates the evolution of thermal-insulation technologies in architecture through patent-family data, interpreting the building envelope as an evolving flow-regulation interface. Rather than treating insulation as a passive technical layer, the study approaches insulating systems as architectural devices that regulate heat, air, moisture, energy, and carbon flows across the boundary between interior and exterior environments.
 publication_year: 2026
 publication_type: accepted for presentation at the 16th Constructal Law
-  Conference (CLC2026), Paris, 12–15 October 2026
+  Conference (CLC-2026), October 12–15, Paris
 publication_type_fr: Accepté pour présentation à 16th Constructal Law Conference
-  (CLC2026), Paris, 12-15 octobre 2026
+  (CLC2026), 12-15 Octobre, Paris
 publication_area: patent_information
 publication_button_enabled: false
 ---
