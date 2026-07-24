@@ -1,17 +1,19 @@
 ---
-title: "L'information brevets, composante à part entière de l'écosystème deeptech"
+publication_area: further_insights
 publication_date: 2026-06-02
+title: L'information brevets, composante à part entière de l'écosystème deeptech
+abstract: Retour sur le SPRING Paris-Saclay 2026 et sur la place de
+  l'information brevets comme composante de l'écosystème deeptech, aux côtés du
+  financement, de l'industrialisation et de l'accompagnement.
 publication_year: 2026
 publication_type: Article proposition
 publication_type_fr: Proposition d’article
-publication_area: further_insights
-abstract: "Retour sur le SPRING Paris-Saclay 2026 et sur la place de l'information brevets comme composante de l'écosystème deeptech, aux côtés du financement, de l'industrialisation et de l'accompagnement."
 publication_file: /uploads/02-further-insights-proposition-article-cfib-mexis-02-june.docx
-publication_button_enabled: true
+publication_button_enabled: false
 publication_button_label: Download document
 publication_button_label_fr: Télécharger le document
-current_collaboration: false
 current_status: Working paper
+current_collaboration: false
 ---
 **Retour sur le SPRING Paris-Saclay 2026**
 
