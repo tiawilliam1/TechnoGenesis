@@ -14,11 +14,15 @@ abstract: >+
 
 
 publication_year: 2026
-publication_type: Keynote presentation
+publication_type: Keynote presentation in Global Summit on Optics, Photonics &
+  Laser Technologies 2026, July 20-21, Paris
+publication_type_fr: "Présentation Keynote à Global Summit on Optics, Photonics
+  & Laser Technologies 2026,Julliet 20-21, Paris "
 publication_area: patent_information
 publication_file: /uploads/technogenesis_presentation_vs4.pdf
 publication_button_enabled: true
 publication_button_label: Download Presentation
+publication_button_label_fr: Télécharger le diaporama
 ---
 The trends are illustrated with preliminary patent-family data, drawn from TechnoGenesis analysis using Minesoft Origin and from published landscape reports. The figures are indicative, intended to convey direction and relative scale, not precise numbers.
 
