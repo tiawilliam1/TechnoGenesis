@@ -5,7 +5,7 @@ abstract: >-
   TechnoGenesis in collaboration with Prof. Lazaros Mavromatidis (ENSAPM–PSL
   University, GSA Laboratory, Paris).*
 
-  *Corresponding author: Meletis Mexis
+  *Corresponding author: Meletis Mexis. 
 
 
   This paper investigates the evolution of thermal-insulation technologies in architecture through patent-family data, interpreting the building envelope as an evolving flow-regulation interface. Rather than treating insulation as a passive technical layer, the study approaches insulating systems as architectural devices that regulate heat, air, moisture, energy, and carbon flows across the boundary between interior and exterior environments.
