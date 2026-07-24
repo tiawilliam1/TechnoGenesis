@@ -12,8 +12,8 @@ abstract: >-
 publication_year: 2026
 publication_type: accepted for presentation at the 16th Constructal Law
   Conference (CLC2026), Paris, 12–15 October 2026
-publication_type_fr: Accepté pour présentation à  16th Constructal Law
-  Conference (CLC2026), Paris, 12-15 octobre 2026
+publication_type_fr: Accepté pour présentation à 16th Constructal Law Conference
+  (CLC2026), Paris, 12-15 octobre 2026
 publication_area: patent_information
 publication_button_enabled: false
 ---
