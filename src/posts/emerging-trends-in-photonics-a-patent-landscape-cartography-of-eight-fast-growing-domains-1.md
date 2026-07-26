@@ -5,9 +5,7 @@ abstract: >+
   How is intellectual property shifting across eight of photonics'
   fastest-growing fields — who is filing, where, and where the whitespace
   remains? A patent-landscape read of the emerging trends, with two domains
-  analysed in-house by TechnoGenesis. (Selected highlights, including
-  TechnoGenesis's own S-curve patent analysis, are available to download below;
-  Full eight-domain analysis available on request.)
+  analysed in-house by TechnoGenesis. 
 
 
 
@@ -29,3 +27,5 @@ The trends are illustrated with preliminary patent-family data, drawn from Techn
 Three cross-cutting signals emerge. First, filing volume has shifted toward China, which accounts for roughly 40–60% of published activity in several of the emerging domains. Yet the United States and Europe still hold most international, multi-jurisdiction families — so filing volume and filing quality tell different stories. Second, artificial-intelligence infrastructure is the main demand engine. It pulls co-packaged optics, photonic computing and hollow-core fibre forward together. Third, the domains are converging: metasurfaces feed both LIDAR and AR, and silicon photonics underpins both quantum and computing.
 
 Together, these eight trends form one clear, high-level map: where photonics is growing fastest, and where patent activity is concentrating. The aim is to help researchers, R&D teams and IP professionals see which domains are accelerating — and where room for new, protectable inventions remains.
+
+Selected highlights, including TechnoGenesis's own S-curve patent analysis, are available to download below; Full eight-domain analysis available on request
