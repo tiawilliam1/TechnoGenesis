@@ -22,5 +22,5 @@ First results reveal a multi-stage trajectory: slow growth until the 1960s, a fi
 
 **Keywords:** *patent analysis, thermal insulation, building envelope, constructal law, flow regulation, technology S-curve, material innovation, architectural technology.*
 
-Meletis Mexis*, TechnoGenesis, Paris & Prof. Lazaros Mavromatidis, ENSAPM–PSL University, GSA Laboratory, Paris, **Corresponding author* 
+**Affiliation:** Meletis Mexis *, TechnoGenesis, Paris & Prof. Lazaros Mavromatidis, ENSAPM–PSL University, GSA Laboratory, Paris **Corresponding author* 
 
