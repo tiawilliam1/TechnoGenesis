@@ -2,15 +2,10 @@
 title: "Emerging Trends in Photonics: A Patent-Landscape Cartography of Eight
   Fast-Growing Domains"
 abstract: >+
-  This presentation surveys eight of the fastest-emerging trends in photonics.
-  They are silicon photonics and co-packaged optics; photonic computing for
-  artificial intelligence; quantum photonics and quantum key distribution (QKD);
-  metasurfaces and flat optics; automotive LIDAR and optical sensing;
-  hollow-core fibre; augmented-reality (AR) waveguide displays; and biophotonics
-  and optical coherence tomography (OCT). For each domain, TechnoGenesis
-  examines the intellectual-property picture: who is filing patents, in which
-  countries, how fast activity is growing, and where thinly-patented, high-value
-  whitespace remains.
+  (Download of parts of presentation corresponding to in-house analysis in now
+  available in the link below)
+
+  This presentation surveys eight of the fastest-emerging trends in photonics. They are silicon photonics and co-packaged optics; photonic computing for artificial intelligence; quantum photonics and quantum key distribution (QKD); metasurfaces and flat optics; automotive LIDAR and optical sensing; hollow-core fibre; augmented-reality (AR) waveguide displays; and biophotonics and optical coherence tomography (OCT). For each domain, TechnoGenesis examines the intellectual-property picture: who is filing patents, in which countries, how fast activity is growing, and where thinly-patented, high-value whitespace remains.
 
 
 publication_year: 2026
