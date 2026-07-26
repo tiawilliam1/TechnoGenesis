@@ -20,7 +20,7 @@ The research is based on patent data retrieved and analysed through Minesoft Ori
 
 First results reveal a multi-stage trajectory: slow growth until the 1960s, a first wave linked to the 1970s energy crises, renewed growth in the 1990s, and a steep post-2010 acceleration, followed by a possible plateau around 2020–2022. This trajectory is interpreted through the constructal law and the S-curve model of technological spreading as invasion and consolidation processes. The paper argues that the history of insulation is not merely a history of better materials, but a sequence of architectural flow-design strategies through which buildings adapt to changing energetic, environmental, industrial, and climatic constraints.
 
-**Keywords:** *patent analysis, thermal insulation, building envelope, constructal law, flow regulation, technology S-curve, material innovation, architectural technology.
+**Keywords:** *patent analysis, thermal insulation, building envelope, constructal law, flow regulation, technology S-curve, material innovation, architectural technology.*
 
 Meletis Mexis*, TechnoGenesis, Paris & Prof. Lazaros Mavromatidis, ENSAPM–PSL University, GSA Laboratory, Paris, **Corresponding author* 
 
