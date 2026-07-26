@@ -28,6 +28,6 @@ Three cross-cutting signals emerge. First, filing volume has shifted toward Chin
 
 Together, these eight trends form one clear, high-level map: where photonics is growing fastest, and where patent activity is concentrating. The aim is to help researchers, R&D teams and IP professionals see which domains are accelerating — and where room for new, protectable inventions remains.
 
-**Keywords:** *patent landscape, photonics, emerging technologies, patent-family analytics, IP strategy, technology S-curves, whitespace analysis.
+**Keywords:** *patent landscape, photonics, emerging technologies, patent-family analytics, IP strategy, technology S-curves, whitespace analysis.*
  
 **Selected highlights**, *including TechnoGenesis's own S-curve patent analysis, are available to download below. Full eight-domain analysis available on request*
