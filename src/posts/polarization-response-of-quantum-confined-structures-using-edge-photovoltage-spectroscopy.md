@@ -1,9 +1,6 @@
 ---
 title: Polarization response of quantum-confined structures using
   edge-photovoltage spectroscopy
-publication_year: 2007
-publication_type: Article
-publication_area: photonics_semiconductors
 abstract: >
   This study proposes a method to obtain the ratio of the fundamental TE/TM
   optical response of a quantum-confined system from the measurement of the
@@ -13,6 +10,9 @@ abstract: >
   are in excellent agreement with known ratios of the band-edge matrix elements.
   This method is of particular value in the study of quantum dot systems where
   the polarization behaviour is difficult to predict.
+publication_year: 2007
+publication_type: Article
+publication_area: photonics_semiconductors
 image: /uploads/screenshot-2026-05-11-at-11.31.52 am.png
 publication_link: https://www.researchgate.net/publication/231338456_Polarization_response_of_quantum-confined_structures_using_edge-photovoltage_spectroscopy
 tags:
@@ -20,4 +20,4 @@ tags:
 ---
 **Keywords:** *InGaP, quantum wells, edge-photovoltage spectroscopy, polarization, TE/TM, quantum dots*
 
-**Reference:** Mexis M., *et.al*., *Semicond. Sci. Technol.* 22, 1298 (2007)
+**Reference:** Mexis M., *et.al*., *Semicond. Sci. Technol.* 22, 1298 (2007) 
