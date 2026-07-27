@@ -30,4 +30,4 @@ Together, these eight trends form one clear, high-level map: where photonics is 
 
 **Keywords:** *patent landscape, photonics, emerging technologies, patent-family analytics, IP strategy, technology S-curves, whitespace analysis.*
  
-**Selected highlights**, *including TechnoGenesis's own S-curve patent analysis, are available to download below. *Domain specific analysis available on request*
+**Selected highlights**, including TechnoGenesis's own S-curve patent analysis, are available to download below. *Domain specific analysis available on request*
