@@ -15,8 +15,6 @@ publication_button_label_fr: Télécharger le document
 current_status: Working paper
 current_collaboration: false
 ---
-**Retour sur le SPRING Paris-Saclay 2026**
-
 On 2 June, the Renault Group Technocentre in Guyancourt hosted Paris-Saclay SPRING — the annual gathering of the deeptech ecosystem of the Paris-Saclay cluster. Organised by the Paris-Saclay public development authority (Établissement Public d'Aménagement Paris-Saclay), the event brings together each year startups, laboratories, major industrial groups, funders and support organisations in a dense format: startup pitches, conferences, B2B meetings and networking. With more than 1,300 participants, it is one of the major meeting points of deeptech, at both the French and European scale. The 2026 edition showcased the "SPRING 120" — one hundred and twenty key players selected across four sectors: Greentech & Food, Health-Biotech, Industry & Services and Digital Technologies — against a backdrop of a theme very much of its time: innovation, competitiveness and technological sovereignty.
 Beyond the technology projects themselves, what strikes you as you go through the event catalogue is the presence — discreet but real — of the intellectual-property and patent-information professions. It is a point worth highlighting to our community: patent information is not a peripheral service to innovation, but genuinely a component of its ecosystem, on the same footing as funding, industrialisation or support.
 A diversity of profiles in the service of innovation
