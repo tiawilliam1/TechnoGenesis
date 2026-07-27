@@ -6,7 +6,7 @@ abstract: Reflections on Paris-Saclay SPRING 2026 and the place of patent
   information within the deeptech ecosystem — alongside funding,
   industrialisation and support.
 publication_year: 2026
-publication_type: Article proposition
+publication_type: Insight note
 publication_type_fr: Proposition d’article
 publication_file: /uploads/02-further-insights-proposition-article-cfib-mexis-02-june.docx
 publication_button_enabled: false
