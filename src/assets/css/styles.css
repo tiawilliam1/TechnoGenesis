@@ -3516,6 +3516,10 @@ margin-top:4%;
     text-align: justify;
   }
 
+  .publications-topic-full-description {
+    gap: 12px;
+  }
+
   .publication-body strong {
     color: #1a3a67;
     font-weight: 700;

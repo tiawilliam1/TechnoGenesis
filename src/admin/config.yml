@@ -72,7 +72,8 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Short preview shown before the full text, especially in Further Insights." }
+      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Abstract / Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
       - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Keynote presentation", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
       - { label: "Publication Type / Format (French)", name: "publication_type_fr", widget: "string", required: false, hint: "Optional French badge text. If empty, the main type is used." }
@@ -84,6 +85,7 @@ collections:
       - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: View publication, View slides, Download abstract, Conference page." }
       - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
       - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
+      - { label: "Body (French)", name: "body_fr", widget: "text", required: false, hint: "Optional French full text. Markdown syntax is supported." }
 
   - name: "photonics_semiconductors_publications"
     label: "2. Publications in Photonics & Semiconductors"
@@ -98,7 +100,8 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Short preview shown on cards and previews." }
+      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Abstract / Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
       - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Article", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
       - { label: "Publication Type / Format (French)", name: "publication_type_fr", widget: "string", required: false, hint: "Optional French badge text. If empty, the main type is used." }
@@ -109,9 +112,10 @@ collections:
       - { label: "Enable Publication Button", name: "publication_button_enabled", widget: "boolean", default: true, required: false, hint: "Turn this off when the publication, slides, or link should not be clickable yet." }
       - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: View publication, View slides, Download abstract, Conference page." }
       - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
-      - { label: "Show in Current Collaboration Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current collaboration and submission topics." }
+      - { label: "Show in Current Contributions Section", name: "current_collaboration", widget: "boolean", default: false, required: false, hint: "When enabled, this publication also appears in Current and upcoming contributions." }
       - { label: "Current Collaboration Status", name: "current_status", widget: "string", default: "Working paper", required: false }
       - { label: "Body", name: "body", widget: "text", required: false, hint: "Optional. Markdown syntax is supported here, but this plain text editor avoids the Decap rich-text crash." }
+      - { label: "Body (French)", name: "body_fr", widget: "text", required: false, hint: "Optional French full text. Markdown syntax is supported." }
 
   - name: "further_insights_publications"
     label: "3. Further Insights / Perspectives"
@@ -126,7 +130,8 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short Preview", name: "abstract", widget: "text", required: false, hint: "Only this preview shows before readers open the full text." }
+      - { label: "Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep insights in chronological order." }
       - { label: "Insight Type / Format", name: "publication_type", widget: "string", default: "Article proposition", required: false, hint: "Free text shown as a badge, e.g. Article proposition, Note, Talk, Commentary." }
       - { label: "Insight Type / Format (French)", name: "publication_type_fr", widget: "string", default: "Proposition d’article", required: false, hint: "Optional French badge text. If empty, the main type is used." }
@@ -138,3 +143,4 @@ collections:
       - { label: "Button Label", name: "publication_button_label", widget: "string", required: false, hint: "Optional. Example: Download document, View slides, Read article." }
       - { label: "Button Label (French)", name: "publication_button_label_fr", widget: "string", required: false, hint: "Optional French button label." }
       - { label: "Full Text", name: "body", widget: "text", required: false, hint: "This opens when readers click Open full text / Lire le texte complet. Use **bold text** for blue section headings." }
+      - { label: "Full Text (French)", name: "body_fr", widget: "text", required: false, hint: "Optional French full text. Markdown syntax is supported." }

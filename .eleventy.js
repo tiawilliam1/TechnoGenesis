@@ -1,4 +1,6 @@
 module.exports = function (eleventyConfig) {
+  const markdownIt = require("markdown-it");
+  const markdown = markdownIt({ html: true, linkify: true, typographer: true });
   // Copy static folders to output
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
   eleventyConfig.addPassthroughCopy({ "src/uploads": "uploads" });
@@ -82,6 +84,7 @@ module.exports = function (eleventyConfig) {
   // Date filter (fixes Netlify build)
   eleventyConfig.addFilter("date", () => new Date().getFullYear());
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+  eleventyConfig.addFilter("markdown", (value) => markdown.render(String(value || "")));
   eleventyConfig.addFilter("isPublicationTarget", (value) => {
     if (typeof value !== "string") return false;
 

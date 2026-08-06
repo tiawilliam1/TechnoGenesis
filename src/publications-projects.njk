@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: Research & Publications
-description: Scientific output in photonics, semiconductors and patent information.
+title: Publication
+description: Scientific output in photonics, semiconductors and patent information insights.
 meta_title: Research and Publications by TechnoGenesis
 meta_description: Explore scientific output from TechnoGenesis in photonics, semiconductors, and patent information.
 meta_image: /assets/img/logo3.png
@@ -62,9 +62,9 @@ home_theme: alt
 <section class="publications-page">
   <div class="publications-hero">
     <div class="publications-hero-inner">
-      <h1 data-reveal="up">Research &amp; Publications</h1>
+      <h1 data-reveal="up">Publication</h1>
       <p class="publications-short" data-reveal="up" style="--reveal-delay: 80ms;">
-        Scientific output in photonics, semiconductors and patent information.
+        Scientific output in photonics, semiconductors and patent insights.
       </p>
     </div>
 
@@ -77,12 +77,12 @@ home_theme: alt
 
   <section class="publications-info-section publications-info-section--patent" id="patent-intelligence-publications">
     <div class="publications-info-inner publications-info-inner--patent" data-reveal="up">
-      <h2>Publications in Patent Information</h2>
+      <h2>Publication on Patent Information</h2>
       <p class="publications-info-emphasis">
-        Written in collaboration with academic partners, at the intersection of patent intelligence and applied physics research.
+        Publications and presentations in patent information, spanning individual research and collaborations with academic partners.
       </p>
       <div class="publications-topic-head">
-        <p class="publications-topic-label">Current collaboration and submission topics</p>
+        <p class="publications-topic-label">Current and upcoming contributions</p>
       </div>
 
       {% if collections.patentTopicPublications and collections.patentTopicPublications.length %}
@@ -101,6 +101,7 @@ home_theme: alt
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.content or post.templateContent %}
             {% set summaryText = post.data.abstract or post.data.description %}
+            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
             <li>
               <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
                 <div class="publication-content">
@@ -118,7 +119,7 @@ home_theme: alt
                     <details class="publications-topic-details">
                       <summary>
                         {% if summaryText %}
-                          <span class="publications-topic-description">{{ summaryText }}</span>
+                          <span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>
                         {% endif %}
                         <span class="publications-topic-toggle">
                           <span class="publications-topic-toggle-more">{% if summaryText %}View full description{% else %}View details{% endif %}</span>
@@ -186,8 +187,10 @@ home_theme: alt
           {% set publicationButtonLabel = post.data.publication_button_label or "View publication" %}
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.content or post.templateContent %}
+          {% set summaryText = post.data.abstract or post.data.description %}
+          {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
           <article
-            class="publication-card{% if not publicationImage %} publication-card--no-media{% endif %}"
+            class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}"
             data-index="{{ loop.index0 }}"
             data-title="{{ (post.data.title or '') | lower | escape }}"
           >
@@ -199,20 +202,21 @@ home_theme: alt
                 <span class="publication-type-badge">{{ post.data.publication_type or "Article" }}</span>
               </div>
               <h3>{{ post.data.title }}</h3>
-              {% if post.data.abstract or post.data.description %}
-                <p>{{ post.data.abstract or post.data.description }}</p>
-              {% endif %}
-              {% if publicationBody %}
-                <div class="publication-body">
-                  {{ publicationBody | safe }}
-                </div>
-              {% endif %}
-              {% if publicationButtonEnabled %}
-                <p class="publication-link-wrap">
-                  <a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">
-                    {{ publicationButtonLabel }}
-                  </a>
-                </p>
+              {% if summaryText or publicationBody or publicationButtonEnabled %}
+                <details class="publications-topic-details">
+                  <summary>
+                    {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>{% endif %}
+                    <span class="publications-topic-toggle">
+                      <span class="publications-topic-toggle-more">{% if summaryText or publicationBody %}View full description{% else %}View publication{% endif %}</span>
+                      <span class="publications-topic-toggle-less">Show less</span>
+                    </span>
+                  </summary>
+                  <div class="publication-body publications-topic-full-description">
+                    {% if summaryText %}<p>{{ summaryText }}</p>{% endif %}
+                    {% if publicationBody %}{{ publicationBody | safe }}{% endif %}
+                    {% if publicationButtonEnabled %}<p class="publication-link-wrap"><a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publicationButtonLabel }}</a></p>{% endif %}
+                  </div>
+                </details>
               {% endif %}
             </div>
             {% if publicationImage %}
@@ -359,7 +363,9 @@ home_theme: alt
             {% set publicationButtonLabel = post.data.publication_button_label or "View publication" %}
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.content or post.templateContent %}
-            <article class="publication-card{% if not publicationImage %} publication-card--no-media{% endif %}">
+            {% set summaryText = post.data.abstract or post.data.description %}
+            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
+            <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
               <div class="publication-content">
                 <div class="publication-meta">
                   {% if post.data.publication_year %}
@@ -368,23 +374,18 @@ home_theme: alt
                   <span class="publication-type-badge">{{ post.data.publication_type or "Insight" }}</span>
                 </div>
                 <h3>{{ post.data.title }}</h3>
-                {% if post.data.abstract or post.data.description %}
-                  <p>{{ post.data.abstract or post.data.description }}</p>
-                {% endif %}
-                {% if publicationBody %}
-                  <details class="publications-insight-details">
-                    <summary>Open full text</summary>
-                    <div class="publication-body publications-insight-full-text">
-                      {{ publicationBody | safe }}
+                {% if summaryText or publicationBody or publicationButtonEnabled %}
+                  <details class="publications-topic-details">
+                    <summary>
+                      {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>{% endif %}
+                      <span class="publications-topic-toggle"><span class="publications-topic-toggle-more">{% if summaryText or publicationBody %}View full description{% else %}View publication{% endif %}</span><span class="publications-topic-toggle-less">Show less</span></span>
+                    </summary>
+                    <div class="publication-body publications-topic-full-description">
+                      {% if summaryText %}<p>{{ summaryText }}</p>{% endif %}
+                      {% if publicationBody %}{{ publicationBody | safe }}{% endif %}
+                      {% if publicationButtonEnabled %}<p class="publication-link-wrap"><a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">{{ publicationButtonLabel }}</a></p>{% endif %}
                     </div>
                   </details>
-                {% endif %}
-                {% if publicationButtonEnabled %}
-                  <p class="publication-link-wrap">
-                    <a class="publication-link" href="{{ publicationTarget }}" target="_blank" rel="noopener noreferrer">
-                      {{ publicationButtonLabel }}
-                    </a>
-                  </p>
                 {% endif %}
               </div>
               {% if publicationImage %}
