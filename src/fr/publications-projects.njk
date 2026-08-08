@@ -104,7 +104,7 @@ home_theme: alt
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.data.body_fr and (post.data.body_fr | markdown) or (post.content or post.templateContent) %}
             {% set summaryText = post.data.abstract_fr or post.data.abstract or post.data.description %}
-            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
+            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 300) %}
             {% set typeLabel = post.data.publication_type_fr or (post.data.publication_type == "Conference paper or presentation" and "Conférence ou présentation" or (post.data.publication_type or "Article")) %}
             <li>
               <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
@@ -123,7 +123,7 @@ home_theme: alt
                     <details class="publications-topic-details">
                       <summary>
                         {% if summaryText %}
-                          <span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>
+                          <span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 300 %}…{% endif %}</span>
                         {% endif %}
                         <span class="publications-topic-toggle">
                           <span class="publications-topic-toggle-more">{% if summaryText %}Voir la description complète{% else %}Voir les détails{% endif %}</span>
@@ -192,7 +192,7 @@ home_theme: alt
           {% set publicationImage = post.data.image or post.data.featured_image %}
           {% set publicationBody = post.data.body_fr and (post.data.body_fr | markdown) or (post.content or post.templateContent) %}
           {% set summaryText = post.data.abstract_fr or post.data.abstract or post.data.description %}
-          {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
+          {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 300) %}
           {% set typeLabel = post.data.publication_type_fr or (post.data.publication_type == "Conference paper or presentation" and "Conférence ou présentation" or (post.data.publication_type or "Article")) %}
           <article
             class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}"
@@ -210,7 +210,7 @@ home_theme: alt
               {% if summaryText or publicationBody or publicationButtonEnabled %}
                 <details class="publications-topic-details">
                   <summary>
-                    {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>{% endif %}
+                    {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 300 %}…{% endif %}</span>{% endif %}
                     <span class="publications-topic-toggle"><span class="publications-topic-toggle-more">{% if summaryText or publicationBody %}Voir la description complète{% else %}Voir la publication{% endif %}</span><span class="publications-topic-toggle-less">Réduire</span></span>
                   </summary>
                   <div class="publication-body publications-topic-full-description">
@@ -366,7 +366,8 @@ home_theme: alt
             {% set publicationImage = post.data.image or post.data.featured_image %}
             {% set publicationBody = post.data.body_fr and (post.data.body_fr | markdown) or (post.content or post.templateContent) %}
             {% set summaryText = post.data.abstract_fr or post.data.abstract or post.data.description %}
-            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 100) %}
+            {% set summaryPreview = summaryText and (summaryText | striptags | trim).slice(0, 300) %}
+            {% set displayTitle = post.data.title_fr or post.data.title %}
             {% set typeLabel = post.data.publication_type_fr or (post.data.publication_type == "Conference paper or presentation" and "Conférence ou présentation" or (post.data.publication_type or "Prospective")) %}
             <article class="publication-card publication-card--compact publications-topic-card{% if not publicationImage %} publication-card--no-media{% endif %}">
               <div class="publication-content">
@@ -376,11 +377,11 @@ home_theme: alt
                   {% endif %}
                   <span class="publication-type-badge">{{ typeLabel }}</span>
                 </div>
-                <h3>{{ post.data.title }}</h3>
+                <h3>{{ displayTitle }}</h3>
                 {% if summaryText or publicationBody or publicationButtonEnabled %}
                   <details class="publications-topic-details">
                     <summary>
-                      {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 100 %}…{% endif %}</span>{% endif %}
+                      {% if summaryText %}<span class="publications-topic-description">{{ summaryPreview }}{% if (summaryText | striptags | trim).length > 300 %}…{% endif %}</span>{% endif %}
                       <span class="publications-topic-toggle"><span class="publications-topic-toggle-more">{% if summaryText or publicationBody %}Voir la description complète{% else %}Voir la publication{% endif %}</span><span class="publications-topic-toggle-less">Réduire</span></span>
                     </summary>
                     <div class="publication-body publications-topic-full-description">
@@ -392,7 +393,7 @@ home_theme: alt
                 {% endif %}
               </div>
               {% if publicationImage %}
-                <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ post.data.title | escape }}" aria-label="Ouvrir l’aperçu de l’image pour {{ post.data.title }}">
+                <a class="publication-media js-publication-image" href="{{ publicationImage }}" data-image-src="{{ publicationImage }}" data-image-alt="{{ displayTitle | escape }}" aria-label="Ouvrir l’aperçu de l’image pour {{ displayTitle }}">
                   <img src="{{ publicationImage }}" alt="" />
                 </a>
               {% endif %}

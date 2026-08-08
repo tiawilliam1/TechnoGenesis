@@ -3222,7 +3222,7 @@ margin-top:4%;
     font-size: clamp(0.9rem, 0.98vw, 0.96rem);
     line-height: 1.58;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

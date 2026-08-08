@@ -72,7 +72,7 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 300 characters appear before View full description." }
       - { label: "Abstract / Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
       - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Keynote presentation", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
@@ -100,7 +100,7 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Abstract / Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 300 characters appear before View full description." }
       - { label: "Abstract / Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep publications in chronological order." }
       - { label: "Publication Type / Format", name: "publication_type", widget: "string", default: "Article", required: false, hint: "Free text shown as a badge, e.g. Article, Conference paper, Keynote talk, Accepted abstract, Presentation." }
@@ -130,7 +130,8 @@ collections:
     format: "frontmatter"
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 100 characters appear before View full description." }
+      - { label: "Title (French)", name: "title_fr", widget: "string", required: false, hint: "Optional French title. The main title is used when this is empty." }
+      - { label: "Short Preview", name: "abstract", widget: "text", required: false, hint: "Optional. The first 300 characters appear before View full description." }
       - { label: "Short Preview (French)", name: "abstract_fr", widget: "text", required: false, hint: "Optional French preview. The English preview is used when this is empty." }
       - { label: "Publication Year", name: "publication_year", widget: "number", value_type: "int", required: false, hint: "Used to keep insights in chronological order." }
       - { label: "Insight Type / Format", name: "publication_type", widget: "string", default: "Article proposition", required: false, hint: "Free text shown as a badge, e.g. Article proposition, Note, Talk, Commentary." }
