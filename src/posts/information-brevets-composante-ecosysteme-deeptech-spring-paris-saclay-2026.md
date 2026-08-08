@@ -2,6 +2,7 @@
 publication_area: further_insights
 publication_date: 2026-06-02
 title: "Patent information: an integral component of the deeptech ecosystem"
+title_fr: "L'information brevets, composante à part entière de l'écosystème deeptech"
 abstract: Reflections on Paris-Saclay SPRING 2026 and the place of patent
   information within the deeptech ecosystem — alongside funding,
   industrialisation and support.
